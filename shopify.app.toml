@@ -2,15 +2,14 @@
 
 client_id = "1704c4ab31299736d1483d2e809061e8"
 name = "MePersonalize"
-application_url = "https://example.com"
+application_url = "https://me-personalize.vercel.app"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-include_config_on_deploy = true
 
 [webhooks]
-api_version = "2026-01"
+api_version = "2024-04"
 
   [[webhooks.subscriptions]]
   topics = [ "app/uninstalled" ]
@@ -25,4 +24,8 @@ api_version = "2026-01"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://me-personalize.vercel.app/auth/callback",
+  "https://me-personalize.vercel.app/auth/shopify/callback",
+  "https://me-personalize.vercel.app/api/auth/callback"
+]
