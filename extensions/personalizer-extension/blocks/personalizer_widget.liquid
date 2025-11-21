@@ -35,42 +35,39 @@
       "label": "Text Horizontal Position",
       "default": 50
     },
-    { "type": "header", "content": "--- SLOT 1 CONFIG ---" },
+    { "type": "header", "content": "Slot Configuration (1-5)" },
+    { "type": "paragraph", "content": "Define up to 5 slots for patches." },
     { "type": "text", "id": "slot_1_name", "label": "Slot 1 Name", "default": "Right Chest" },
     { "type": "text", "id": "slot_1_group", "label": "Slot 1 Group ID", "default": "chest" },
     { "type": "range", "id": "slot_1_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 38 },
     { "type": "range", "id": "slot_1_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 38 },
     { "type": "range", "id": "slot_1_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "header", "content": "--- SLOT 2 CONFIG ---" },
     { "type": "text", "id": "slot_2_name", "label": "Slot 2 Name", "default": "Left Chest" },
     { "type": "text", "id": "slot_2_group", "label": "Slot 2 Group ID", "default": "chest" },
     { "type": "range", "id": "slot_2_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 38 },
     { "type": "range", "id": "slot_2_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 62 },
     { "type": "range", "id": "slot_2_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "header", "content": "--- SLOT 3 CONFIG ---" },
     { "type": "text", "id": "slot_3_name", "label": "Slot 3 Name", "default": "Right Hip" },
     { "type": "text", "id": "slot_3_group", "label": "Slot 3 Group ID", "default": "hip" },
     { "type": "range", "id": "slot_3_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 52 },
     { "type": "range", "id": "slot_3_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 38 },
     { "type": "range", "id": "slot_3_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "header", "content": "--- SLOT 4 CONFIG ---" },
     { "type": "text", "id": "slot_4_name", "label": "Slot 4 Name", "default": "Left Hip" },
     { "type": "text", "id": "slot_4_group", "label": "Slot 4 Group ID", "default": "hip" },
     { "type": "range", "id": "slot_4_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 52 },
     { "type": "range", "id": "slot_4_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 62 },
     { "type": "range", "id": "slot_4_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "header", "content": "--- SLOT 5 CONFIG ---" },
     { "type": "text", "id": "slot_5_name", "label": "Slot 5 Name", "default": "Hat" },
     { "type": "text", "id": "slot_5_group", "label": "Slot 5 Group ID", "default": "hat" },
     { "type": "range", "id": "slot_5_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 8 },
     { "type": "range", "id": "slot_5_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 50 },
     { "type": "range", "id": "slot_5_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 15 },
 
-    { "type": "header", "content": "--- PATCHES (1-10) ---" },
+    { "type": "header", "content": "Patch Library (1-15)" },
     { "type": "image_picker", "id": "patch_1_img", "label": "Patch 1 Image" },
     { "type": "text", "id": "patch_1_name", "label": "Patch 1 Name" },
     { "type": "text", "id": "patch_1_group", "label": "Patch 1 Group ID", "default": "chest" },
@@ -111,7 +108,6 @@
     { "type": "text", "id": "patch_10_name", "label": "Patch 10 Name" },
     { "type": "text", "id": "patch_10_group", "label": "Patch 10 Group ID", "default": "hat" },
 
-    { "type": "header", "content": "--- PATCHES (11-20) ---" },
     { "type": "image_picker", "id": "patch_11_img", "label": "Patch 11 Image" },
     { "type": "text", "id": "patch_11_name", "label": "Patch 11 Name" },
     { "type": "text", "id": "patch_11_group", "label": "Patch 11 Group ID" },
@@ -142,7 +138,7 @@
     <!-- Preview Area -->
     <div class="personalizer-preview">
       <div class="preview-wrapper">
-        <img src="{{ product.featured_image | img_url: 'master' }}" alt="Base Product" class="base-image" id="base-product-image">
+        <img src="{{ product.featured_image | image_url: width: 800 }}" width="800" height="800" alt="Base Product" class="base-image" id="base-product-image">
         <div id="preview-overlay">
             <!-- Patches will be injected here -->
         </div>
@@ -207,7 +203,7 @@
               id: "p{{ i }}",
               name: "{{ section.settings[name_key] | default: 'Patch ' | append: i }}",
               groupId: "{{ section.settings[group_key] }}",
-              src: "{{ section.settings[img_key] | img_url: '300x' }}"
+              src: "{{ section.settings[img_key] | image_url: width: 300 }}"
             },
           {% endif %}
         {% endfor %}
