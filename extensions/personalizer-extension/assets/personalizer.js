@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load Config from Liquid
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
+  console.log('PERSONALIZER: Config Loaded', config);
+
   const SLOTS = config.slots;
   const ALL_PATCHES = config.patches;
   const TEXT_ZONE = config.textZone;
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     slotsContainer.innerHTML = ''; // Clear existing
 
     if (SLOTS.length === 0) {
+      console.warn('PERSONALIZER: No slots found in config');
       slotsContainer.innerHTML = '<p>No slots configured. Please add "Patch Slot" blocks in the Theme Editor.</p>';
       return;
     }
@@ -43,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     SLOTS.forEach(slot => {
       // Filter patches for this slot based on Group ID
       const availablePatches = ALL_PATCHES.filter(p => p.groupId === slot.groupId);
+      console.log(`PERSONALIZER: Slot ${slot.name} (Group: ${slot.groupId}) has ${availablePatches.length} patches`);
 
       const slotDiv = document.createElement('div');
       slotDiv.className = 'patch-slot-control';
@@ -64,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (textInput) {
       textInput.addEventListener('input', (e) => {
         state.text = e.target.value;
+        console.log('PERSONALIZER: Text updated', state.text);
         updatePreview();
         updateFormInputs();
       });
@@ -71,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.selectPatch = function (slotId, patchId) {
+    console.log(`PERSONALIZER: Selecting patch ${patchId} for slot ${slotId}`);
     // Toggle: if already selected, deselect
     if (state.slots[slotId] === patchId) {
       state.slots[slotId] = null;
@@ -102,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
       if (patchId) {
         const patch = ALL_PATCHES.find(p => p.id === patchId);
         if (patch) {
+          console.log(`PERSONALIZER: Rendering patch ${patch.name} at ${slot.top}%, ${slot.left}%`);
           const img = document.createElement('img');
           img.src = patch.src;
           img.className = 'patch-element';
@@ -109,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
           img.style.left = `${slot.left}%`;
           img.style.width = `${slot.width}%`;
           img.style.position = 'absolute'; // Ensure absolute positioning
+          img.style.zIndex = '10'; // Force on top
           overlay.appendChild(img);
         }
       }
@@ -122,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
       textDiv.style.top = `${TEXT_ZONE.top}%`;
       textDiv.style.left = `${TEXT_ZONE.left}%`;
       textDiv.style.position = 'absolute';
+      textDiv.style.zIndex = '20'; // Force on top of patches
       overlay.appendChild(textDiv);
     }
   }

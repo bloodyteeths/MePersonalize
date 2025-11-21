@@ -20,7 +20,8 @@
 .preview-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 150%; /* Aspect ratio of the product image */
+  padding-bottom: 150%;
+  /* Aspect ratio of the product image */
   background: #f9f9f9;
   overflow: hidden;
 }
@@ -45,19 +46,23 @@
 
 .patch-element {
   position: absolute;
-  width: 15%; /* Adjust based on patch size relative to suit */
+  width: 15%;
+  /* Adjust based on patch size relative to suit */
   height: auto;
   transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 .text-overlay {
   position: absolute;
-  font-family: 'Impact', sans-serif; /* Race car style font */
+  font-family: 'Impact', sans-serif;
+  /* Race car style font */
   color: white;
   font-size: 24px;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
   text-shadow: 1px 1px 2px black;
+  z-index: 20;
 }
 
 .personalizer-controls {
@@ -89,7 +94,8 @@
 }
 
 .patch-option.selected {
-  border-color: #d32f2f; /* Racing red */
+  border-color: #d32f2f;
+  /* Racing red */
 }
 
 .patch-option img {
