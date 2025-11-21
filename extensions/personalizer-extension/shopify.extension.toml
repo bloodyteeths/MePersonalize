@@ -1,0 +1,10 @@
+api_version = "2024-04"
+
+[[extensions]]
+name = "Personalizer Extension"
+handle = "personalizer-extension"
+type = "theme_app_extension"
+
+[extensions.capabilities]
+block_progress = true
+network_access = true

@@ -1,0 +1,107 @@
+.personalizer-container {
+  padding: 20px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  margin-top: 20px;
+  background: #fff;
+}
+
+.personalizer-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.personalizer-preview {
+  flex: 1;
+  min-width: 300px;
+}
+
+.preview-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 150%; /* Aspect ratio of the product image */
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+.base-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#preview-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.patch-element {
+  position: absolute;
+  width: 15%; /* Adjust based on patch size relative to suit */
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+
+.text-overlay {
+  position: absolute;
+  font-family: 'Impact', sans-serif; /* Race car style font */
+  color: white;
+  font-size: 24px;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 2px black;
+}
+
+.personalizer-controls {
+  flex: 1;
+  min-width: 300px;
+}
+
+.patch-slot-control {
+  margin-bottom: 15px;
+}
+
+.patch-slot-control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.patch-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.patch-option {
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.patch-option.selected {
+  border-color: #d32f2f; /* Racing red */
+}
+
+.patch-option img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#embroidery-text {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

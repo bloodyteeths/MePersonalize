@@ -1,0 +1,55 @@
+{% schema %}
+{
+  "name": "Personalizer Widget",
+  "target": "section",
+  "stylesheet": "personalizer.css",
+  "javascript": "personalizer.js",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Personalize Your Racer"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="personalizer-container" data-product-id="{{ product.id }}">
+  <h2>{{ block.settings.heading }}</h2>
+  
+  <div class="personalizer-layout">
+    <!-- Preview Area -->
+    <div class="personalizer-preview">
+      <div class="preview-wrapper">
+        <img src="{{ product.featured_image | img_url: 'master' }}" alt="Base Product" class="base-image" id="base-product-image">
+        <div id="preview-overlay">
+            <!-- Patches will be injected here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls Area -->
+    <div class="personalizer-controls">
+      <div class="patch-selectors">
+        <h3>Select Your Patches (5 Free!)</h3>
+        <div id="patch-slots">
+          <!-- Slot selectors will be generated here -->
+        </div>
+      </div>
+
+      <div class="text-input-section">
+        <h3>Add Name (Embroidery)</h3>
+        <input type="text" id="embroidery-text" placeholder="Enter Name (e.g. Maverick)" maxlength="12">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Hidden inputs for form submission -->
+  <input type="hidden" name="properties[Patch 1]" id="prop-patch-1">
+  <input type="hidden" name="properties[Patch 2]" id="prop-patch-2">
+  <input type="hidden" name="properties[Patch 3]" id="prop-patch-3">
+  <input type="hidden" name="properties[Patch 4]" id="prop-patch-4">
+  <input type="hidden" name="properties[Patch 5]" id="prop-patch-5">
+  <input type="hidden" name="properties[Embroidery Text]" id="prop-text">
+</div>
