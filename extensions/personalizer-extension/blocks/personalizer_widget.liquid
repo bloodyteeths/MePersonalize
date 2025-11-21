@@ -6,14 +6,24 @@
   "javascript": "personalizer.js",
   "settings": [
     {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Personalize Your Racer"
+      "type": "paragraph",
+      "content": "⚙️ **Widget Configuration** - Customize the personalizer widget appearance and behavior."
     },
     {
+      "type": "text",
+      "id": "heading",
+      "label": "Widget Heading",
+      "default": "Personalize Your Racer",
+      "info": "The main heading displayed above the personalizer"
+    },
+    
+    {
       "type": "header",
-      "content": "Text Options"
+      "content": "📝 Text Personalization Position"
+    },
+    {
+      "type": "paragraph",
+      "content": "Control where custom text appears on the product preview."
     },
     {
       "type": "range",
@@ -22,8 +32,9 @@
       "max": 100,
       "step": 1,
       "unit": "%",
-      "label": "Text Vertical Position",
-      "default": 25
+      "label": "Vertical Position (Top)",
+      "default": 25,
+      "info": "Distance from top edge (0% = top, 100% = bottom)"
     },
     {
       "type": "range",
@@ -32,101 +43,129 @@
       "max": 100,
       "step": 1,
       "unit": "%",
-      "label": "Text Horizontal Position",
-      "default": 50
+      "label": "Horizontal Position (Left)",
+      "default": 50,
+      "info": "Distance from left edge (0% = left, 100% = right)"
     },
-    { "type": "header", "content": "Slot Configuration (1-5)" },
-    { "type": "paragraph", "content": "Define up to 5 slots for patches." },
-    { "type": "text", "id": "slot_1_name", "label": "Slot 1 Name", "default": "Right Chest" },
-    { "type": "text", "id": "slot_1_group", "label": "Slot 1 Group ID", "default": "chest" },
+    
+    {
+      "type": "header",
+      "content": "🎯 Patch Slots (Where patches can be placed)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Define up to 5 slots where customers can place patches. Each slot needs a name, group ID (to filter which patches can go there), and position."
+    },
+    
+    { "type": "header", "content": "Slot 1" },
+    { "type": "text", "id": "slot_1_name", "label": "Name", "default": "Right Chest", "info": "Display name for this slot" },
+    { "type": "text", "id": "slot_1_group", "label": "Group ID", "default": "chest", "info": "Patches with matching group ID can be placed here" },
     { "type": "range", "id": "slot_1_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 38 },
     { "type": "range", "id": "slot_1_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 38 },
     { "type": "range", "id": "slot_1_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "text", "id": "slot_2_name", "label": "Slot 2 Name", "default": "Left Chest" },
-    { "type": "text", "id": "slot_2_group", "label": "Slot 2 Group ID", "default": "chest" },
+    { "type": "header", "content": "Slot 2" },
+    { "type": "text", "id": "slot_2_name", "label": "Name", "default": "Left Chest", "info": "Display name for this slot" },
+    { "type": "text", "id": "slot_2_group", "label": "Group ID", "default": "chest", "info": "Patches with matching group ID can be placed here" },
     { "type": "range", "id": "slot_2_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 38 },
     { "type": "range", "id": "slot_2_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 62 },
     { "type": "range", "id": "slot_2_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "text", "id": "slot_3_name", "label": "Slot 3 Name", "default": "Right Hip" },
-    { "type": "text", "id": "slot_3_group", "label": "Slot 3 Group ID", "default": "hip" },
+    { "type": "header", "content": "Slot 3" },
+    { "type": "text", "id": "slot_3_name", "label": "Name", "default": "Right Hip", "info": "Display name for this slot" },
+    { "type": "text", "id": "slot_3_group", "label": "Group ID", "default": "hip", "info": "Patches with matching group ID can be placed here" },
     { "type": "range", "id": "slot_3_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 52 },
     { "type": "range", "id": "slot_3_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 38 },
     { "type": "range", "id": "slot_3_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "text", "id": "slot_4_name", "label": "Slot 4 Name", "default": "Left Hip" },
-    { "type": "text", "id": "slot_4_group", "label": "Slot 4 Group ID", "default": "hip" },
+    { "type": "header", "content": "Slot 4" },
+    { "type": "text", "id": "slot_4_name", "label": "Name", "default": "Left Hip", "info": "Display name for this slot" },
+    { "type": "text", "id": "slot_4_group", "label": "Group ID", "default": "hip", "info": "Patches with matching group ID can be placed here" },
     { "type": "range", "id": "slot_4_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 52 },
     { "type": "range", "id": "slot_4_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 62 },
     { "type": "range", "id": "slot_4_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 12 },
 
-    { "type": "text", "id": "slot_5_name", "label": "Slot 5 Name", "default": "Hat" },
-    { "type": "text", "id": "slot_5_group", "label": "Slot 5 Group ID", "default": "hat" },
+    { "type": "header", "content": "Slot 5" },
+    { "type": "text", "id": "slot_5_name", "label": "Name", "default": "Hat", "info": "Display name for this slot" },
+    { "type": "text", "id": "slot_5_group", "label": "Group ID", "default": "hat", "info": "Patches with matching group ID can be placed here" },
     { "type": "range", "id": "slot_5_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top", "default": 8 },
     { "type": "range", "id": "slot_5_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left", "default": 50 },
     { "type": "range", "id": "slot_5_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width", "default": 15 },
 
-    { "type": "header", "content": "Patch Library (1-15)" },
-    { "type": "image_picker", "id": "patch_1_img", "label": "Patch 1 Image" },
-    { "type": "text", "id": "patch_1_name", "label": "Patch 1 Name" },
-    { "type": "text", "id": "patch_1_group", "label": "Patch 1 Group ID", "default": "chest" },
+    {
+      "type": "header",
+      "content": "🏷️ Patch Library (Upload your patch images)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload up to 15 patch images. Each patch needs an image, name, and group ID. Only patches matching a slot's group ID will be available for that slot."
+    },
+    
+    { "type": "header", "content": "Chest Patches (Group: chest)" },
+    { "type": "image_picker", "id": "patch_1_img", "label": "Patch 1 - Image" },
+    { "type": "text", "id": "patch_1_name", "label": "Patch 1 - Name", "info": "e.g., 'Star Badge', 'Lightning Bolt'" },
+    { "type": "text", "id": "patch_1_group", "label": "Patch 1 - Group ID", "default": "chest" },
 
-    { "type": "image_picker", "id": "patch_2_img", "label": "Patch 2 Image" },
-    { "type": "text", "id": "patch_2_name", "label": "Patch 2 Name" },
-    { "type": "text", "id": "patch_2_group", "label": "Patch 2 Group ID", "default": "chest" },
+    { "type": "image_picker", "id": "patch_2_img", "label": "Patch 2 - Image" },
+    { "type": "text", "id": "patch_2_name", "label": "Patch 2 - Name" },
+    { "type": "text", "id": "patch_2_group", "label": "Patch 2 - Group ID", "default": "chest" },
 
-    { "type": "image_picker", "id": "patch_3_img", "label": "Patch 3 Image" },
-    { "type": "text", "id": "patch_3_name", "label": "Patch 3 Name" },
-    { "type": "text", "id": "patch_3_group", "label": "Patch 3 Group ID", "default": "chest" },
+    { "type": "image_picker", "id": "patch_3_img", "label": "Patch 3 - Image" },
+    { "type": "text", "id": "patch_3_name", "label": "Patch 3 - Name" },
+    { "type": "text", "id": "patch_3_group", "label": "Patch 3 - Group ID", "default": "chest" },
 
-    { "type": "image_picker", "id": "patch_4_img", "label": "Patch 4 Image" },
-    { "type": "text", "id": "patch_4_name", "label": "Patch 4 Name" },
-    { "type": "text", "id": "patch_4_group", "label": "Patch 4 Group ID", "default": "chest" },
+    { "type": "image_picker", "id": "patch_4_img", "label": "Patch 4 - Image" },
+    { "type": "text", "id": "patch_4_name", "label": "Patch 4 - Name" },
+    { "type": "text", "id": "patch_4_group", "label": "Patch 4 - Group ID", "default": "chest" },
 
-    { "type": "image_picker", "id": "patch_5_img", "label": "Patch 5 Image" },
-    { "type": "text", "id": "patch_5_name", "label": "Patch 5 Name" },
-    { "type": "text", "id": "patch_5_group", "label": "Patch 5 Group ID", "default": "chest" },
+    { "type": "image_picker", "id": "patch_5_img", "label": "Patch 5 - Image" },
+    { "type": "text", "id": "patch_5_name", "label": "Patch 5 - Name" },
+    { "type": "text", "id": "patch_5_group", "label": "Patch 5 - Group ID", "default": "chest" },
 
-    { "type": "image_picker", "id": "patch_6_img", "label": "Patch 6 Image" },
-    { "type": "text", "id": "patch_6_name", "label": "Patch 6 Name" },
-    { "type": "text", "id": "patch_6_group", "label": "Patch 6 Group ID", "default": "hip" },
+    { "type": "header", "content": "Hip Patches (Group: hip)" },
+    { "type": "image_picker", "id": "patch_6_img", "label": "Patch 6 - Image" },
+    { "type": "text", "id": "patch_6_name", "label": "Patch 6 - Name" },
+    { "type": "text", "id": "patch_6_group", "label": "Patch 6 - Group ID", "default": "hip" },
 
-    { "type": "image_picker", "id": "patch_7_img", "label": "Patch 7 Image" },
-    { "type": "text", "id": "patch_7_name", "label": "Patch 7 Name" },
-    { "type": "text", "id": "patch_7_group", "label": "Patch 7 Group ID", "default": "hip" },
+    { "type": "image_picker", "id": "patch_7_img", "label": "Patch 7 - Image" },
+    { "type": "text", "id": "patch_7_name", "label": "Patch 7 - Name" },
+    { "type": "text", "id": "patch_7_group", "label": "Patch 7 - Group ID", "default": "hip" },
 
-    { "type": "image_picker", "id": "patch_8_img", "label": "Patch 8 Image" },
-    { "type": "text", "id": "patch_8_name", "label": "Patch 8 Name" },
-    { "type": "text", "id": "patch_8_group", "label": "Patch 8 Group ID", "default": "hip" },
+    { "type": "image_picker", "id": "patch_8_img", "label": "Patch 8 - Image" },
+    { "type": "text", "id": "patch_8_name", "label": "Patch 8 - Name" },
+    { "type": "text", "id": "patch_8_group", "label": "Patch 8 - Group ID", "default": "hip" },
 
-    { "type": "image_picker", "id": "patch_9_img", "label": "Patch 9 Image" },
-    { "type": "text", "id": "patch_9_name", "label": "Patch 9 Name" },
-    { "type": "text", "id": "patch_9_group", "label": "Patch 9 Group ID", "default": "hip" },
+    { "type": "image_picker", "id": "patch_9_img", "label": "Patch 9 - Image" },
+    { "type": "text", "id": "patch_9_name", "label": "Patch 9 - Name" },
+    { "type": "text", "id": "patch_9_group", "label": "Patch 9 - Group ID", "default": "hip" },
 
-    { "type": "image_picker", "id": "patch_10_img", "label": "Patch 10 Image" },
-    { "type": "text", "id": "patch_10_name", "label": "Patch 10 Name" },
-    { "type": "text", "id": "patch_10_group", "label": "Patch 10 Group ID", "default": "hat" },
+    { "type": "header", "content": "Hat Patches (Group: hat)" },
+    { "type": "image_picker", "id": "patch_10_img", "label": "Patch 10 - Image" },
+    { "type": "text", "id": "patch_10_name", "label": "Patch 10 - Name" },
+    { "type": "text", "id": "patch_10_group", "label": "Patch 10 - Group ID", "default": "hat" },
 
-    { "type": "image_picker", "id": "patch_11_img", "label": "Patch 11 Image" },
-    { "type": "text", "id": "patch_11_name", "label": "Patch 11 Name" },
-    { "type": "text", "id": "patch_11_group", "label": "Patch 11 Group ID" },
+    { "type": "header", "content": "Additional Patches (Custom Groups)" },
+    { "type": "paragraph", "content": "Use these for additional patches. Set custom group IDs to match your slots." },
+    
+    { "type": "image_picker", "id": "patch_11_img", "label": "Patch 11 - Image" },
+    { "type": "text", "id": "patch_11_name", "label": "Patch 11 - Name" },
+    { "type": "text", "id": "patch_11_group", "label": "Patch 11 - Group ID", "info": "e.g., 'chest', 'hip', 'hat', or custom" },
 
-    { "type": "image_picker", "id": "patch_12_img", "label": "Patch 12 Image" },
-    { "type": "text", "id": "patch_12_name", "label": "Patch 12 Name" },
-    { "type": "text", "id": "patch_12_group", "label": "Patch 12 Group ID" },
+    { "type": "image_picker", "id": "patch_12_img", "label": "Patch 12 - Image" },
+    { "type": "text", "id": "patch_12_name", "label": "Patch 12 - Name" },
+    { "type": "text", "id": "patch_12_group", "label": "Patch 12 - Group ID" },
 
-    { "type": "image_picker", "id": "patch_13_img", "label": "Patch 13 Image" },
-    { "type": "text", "id": "patch_13_name", "label": "Patch 13 Name" },
-    { "type": "text", "id": "patch_13_group", "label": "Patch 13 Group ID" },
+    { "type": "image_picker", "id": "patch_13_img", "label": "Patch 13 - Image" },
+    { "type": "text", "id": "patch_13_name", "label": "Patch 13 - Name" },
+    { "type": "text", "id": "patch_13_group", "label": "Patch 13 - Group ID" },
 
-    { "type": "image_picker", "id": "patch_14_img", "label": "Patch 14 Image" },
-    { "type": "text", "id": "patch_14_name", "label": "Patch 14 Name" },
-    { "type": "text", "id": "patch_14_group", "label": "Patch 14 Group ID" },
+    { "type": "image_picker", "id": "patch_14_img", "label": "Patch 14 - Image" },
+    { "type": "text", "id": "patch_14_name", "label": "Patch 14 - Name" },
+    { "type": "text", "id": "patch_14_group", "label": "Patch 14 - Group ID" },
 
-    { "type": "image_picker", "id": "patch_15_img", "label": "Patch 15 Image" },
-    { "type": "text", "id": "patch_15_name", "label": "Patch 15 Name" },
-    { "type": "text", "id": "patch_15_group", "label": "Patch 15 Group ID" }
+    { "type": "image_picker", "id": "patch_15_img", "label": "Patch 15 - Image" },
+    { "type": "text", "id": "patch_15_name", "label": "Patch 15 - Name" },
+    { "type": "text", "id": "patch_15_group", "label": "Patch 15 - Group ID" }
   ]
 }
 {% endschema %}

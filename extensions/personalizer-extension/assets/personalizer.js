@@ -22,11 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // FALLBACK: If no patches are configured, inject defaults
   if (ALL_PATCHES.length === 0) {
     console.warn('PERSONALIZER: No patches found in config. Using JS Fallback defaults.');
+    // Use a simple gray square as placeholder (base64 data URI to avoid 404)
+    const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5QYXRjaCBQbGFjZWhvbGRlcjwvdGV4dD48L3N2Zz4=';
     ALL_PATCHES.push(
-      { id: "p1", name: "Star Patch", groupId: "chest", src: "https://cdn.shopify.com/s/files/1/0664/3857/4839/files/patch-placeholder.png?v=1" },
-      { id: "p2", name: "Lightning Patch", groupId: "hip", src: "https://cdn.shopify.com/s/files/1/0664/3857/4839/files/patch-placeholder.png?v=1" }
+      { id: "p1", name: "Star Patch", groupId: "chest", src: placeholderImage },
+      { id: "p2", name: "Lightning Patch", groupId: "hip", src: placeholderImage }
     );
   }
+
 
   // State
   const state = {
