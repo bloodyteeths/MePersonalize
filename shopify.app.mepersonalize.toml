@@ -1,6 +1,6 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "1704c4ab31299736d1483d2e809061e8"
+client_id = "020d7917796cb4ffb514c9b8b6b6e9a8"
 name = "MePersonalize"
 application_url = "https://example.com"
 embedded = true
@@ -11,14 +11,6 @@ include_config_on_deploy = true
 
 [webhooks]
 api_version = "2026-01"
-
-  [[webhooks.subscriptions]]
-  topics = [ "app/uninstalled" ]
-  uri = "/webhooks/app/uninstalled"
-
-  [[webhooks.subscriptions]]
-  topics = [ "app/scopes_update" ]
-  uri = "/webhooks/app/scopes_update"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes

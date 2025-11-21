@@ -3,6 +3,7 @@ api_version = "2024-04"
 [[extensions]]
 name = "Personalizer Extension"
 handle = "personalizer-extension"
+uid = "21ae4d2d-d506-5820-887e-ebe1372beb46d9481b7e"
 type = "theme_app_extension"
 
 [extensions.capabilities]
