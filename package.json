@@ -2,7 +2,7 @@
   "name": "me-personalize",
   "private": true,
   "scripts": {
-    "build": "prisma generate && (prisma migrate deploy || echo 'Migration failed, skipping...') && remix vite:build",
+    "build": "prisma generate && (prisma db push || echo 'DB Push failed, skipping...') && remix vite:build",
     "dev": "shopify app dev",
     "config:link": "shopify app config link",
     "generate": "shopify app generate",
@@ -29,6 +29,7 @@
     "@remix-run/node": "^2.16.1",
     "@remix-run/react": "^2.16.1",
     "@remix-run/serve": "^2.16.1",
+    "@remix-run/vercel": "^1.19.3",
     "@shopify/app": "^3.58.2",
     "@shopify/app-bridge-react": "^4.1.6",
     "@shopify/cli": "^3.87.4",
