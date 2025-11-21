@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Test - Personalizer Widget</title>
+    <link rel="stylesheet" href="../extensions/personalizer-extension/assets/personalizer.css">
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        /* Mocking Shopify's product page layout */
+        .product-page-mock { max-width: 1000px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+<div class="product-page-mock">
+    <h1>Baby Race Car Driver Costume (Test)</h1>
+    
+    <!-- This mimics the Liquid block output -->
+    <div class="personalizer-container" data-product-id="123456789">
+      <h2>Personalize Your Racer</h2>
+      
+      <div class="personalizer-layout">
+        <!-- Preview Area -->
+        <div class="personalizer-preview">
+          <div class="preview-wrapper">
+            <!-- Using a placeholder for the base image since we don't have the real product image URL yet, 
+                 or I can use the one from the user's request if I can extract it, but a placeholder is safer for now. 
+                 Actually, I'll use a generic race suit placeholder or the user's uploaded image if accessible. 
+                 I'll use a grey placeholder to represent the suit for testing positioning. -->
+            <img src="https://placehold.co/600x900/red/white?text=Race+Suit+Base" alt="Base Product" class="base-image" id="base-product-image">
+            <div id="preview-overlay">
+                <!-- Patches will be injected here -->
+            </div>
+          </div>
+        </div>
+    
+        <!-- Controls Area -->
+        <div class="personalizer-controls">
+          <div class="patch-selectors">
+            <h3>Select Your Patches (5 Free!)</h3>
+            <div id="patch-slots">
+              <!-- Slot selectors will be generated here -->
+            </div>
+          </div>
+    
+          <div class="text-input-section">
+            <h3>Add Name (Embroidery)</h3>
+            <input type="text" id="embroidery-text" placeholder="Enter Name (e.g. Maverick)" maxlength="12">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Hidden inputs for form submission -->
+      <div style="margin-top: 20px; padding: 10px; background: #eee;">
+          <h4>Debug: Form Inputs (Hidden in real app)</h4>
+          <label>Patch 1: <input type="text" name="properties[Patch 1]" id="prop-patch-1" readonly></label><br>
+          <label>Patch 2: <input type="text" name="properties[Patch 2]" id="prop-patch-2" readonly></label><br>
+          <label>Patch 3: <input type="text" name="properties[Patch 3]" id="prop-patch-3" readonly></label><br>
+          <label>Patch 4: <input type="text" name="properties[Patch 4]" id="prop-patch-4" readonly></label><br>
+          <label>Patch 5: <input type="text" name="properties[Patch 5]" id="prop-patch-5" readonly></label><br>
+          <label>Text: <input type="text" name="properties[Embroidery Text]" id="prop-text" readonly></label>
+      </div>
+    </div>
+
+</div>
+
+<script src="../extensions/personalizer-extension/assets/personalizer.js"></script>
+
+</body>
+</html>
