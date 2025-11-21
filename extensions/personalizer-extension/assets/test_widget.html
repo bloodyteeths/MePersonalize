@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalizer Widget Test</title>
+    <link rel="stylesheet" href="personalizer.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-container">
+        <h1>Local Test Harness</h1>
+        <hr>
+
+        <!-- WIDGET HTML START (Copied from personalizer_widget.liquid) -->
+        <div class="personalizer-container" data-product-id="test-product-1">
+            <h2>Personalize Your Racer</h2>
+
+            <div class="personalizer-layout">
+                <!-- Preview Area -->
+                <div class="personalizer-preview">
+                    <div class="preview-wrapper">
+                        <!-- Placeholder Base Image -->
+                        <img src="https://placehold.co/800x800/EEE/31343C?text=Base+Product+Image" width="800"
+                            height="800" alt="Base Product" class="base-image" id="base-product-image">
+                        <div id="preview-overlay">
+                            <!-- Patches will be injected here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls Area -->
+                <div class="personalizer-controls">
+                    <div class="patch-selectors">
+                        <h3>Select Your Patches</h3>
+                        <div id="patch-slots">
+                            <!-- Slot selectors will be generated here -->
+                        </div>
+                    </div>
+
+                    <div class="text-input-section">
+                        <h3>Add Name (Embroidery)</h3>
+                        <input type="text" id="embroidery-text" placeholder="Enter Name (e.g. Maverick)" maxlength="12">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hidden inputs for form submission -->
+            <div id="hidden-inputs-container"></div>
+            <input type="hidden" name="properties[Embroidery Text]" id="prop-text">
+
+            <!-- Data Injection -->
+            <script>
+                window.PERSONALIZER_CONFIG = {
+                    textZone: {
+                        top: 25,
+                        left: 50
+                    },
+                    slots: [
+                        {
+                            id: "1",
+                            name: "Chest",
+                            groupId: "chest",
+                            top: 30,
+                            left: 30,
+                            width: 12
+                        },
+                        {
+                            id: "2",
+                            name: "Hip",
+                            groupId: "hip",
+                            top: 50,
+                            left: 30,
+                            width: 12
+                        },
+                        {
+                            id: "3",
+                            name: "Hat",
+                            groupId: "hat",
+                            top: 10,
+                            left: 50,
+                            width: 15
+                        }
+                    ],
+                    patches: [
+                        {
+                            id: "p1",
+                            name: "Red Star",
+                            groupId: "chest",
+                            src: "https://placehold.co/300x300/FF0000/FFFFFF?text=Star"
+                        },
+                        {
+                            id: "p2",
+                            name: "Blue Circle",
+                            groupId: "chest",
+                            src: "https://placehold.co/300x300/0000FF/FFFFFF?text=Circle"
+                        },
+                        {
+                            id: "p3",
+                            name: "Lightning",
+                            groupId: "hip",
+                            src: "https://placehold.co/300x300/FFFF00/000000?text=Bolt"
+                        },
+                        {
+                            id: "p4",
+                            name: "Skull",
+                            groupId: "hat",
+                            src: "https://placehold.co/300x300/000000/FFFFFF?text=Skull"
+                        }
+                    ]
+                };
+            </script>
+        </div>
+        <!-- WIDGET HTML END -->
+
+    </div>
+
+    <script src="personalizer.js"></script>
+
+</body>
+
+</html>

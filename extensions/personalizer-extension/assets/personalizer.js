@@ -4,11 +4,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Load Config from Liquid
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
-  console.log('PERSONALIZER: Config Loaded', config);
+  console.log('PERSONALIZER: Raw Config Loaded', config);
 
   const SLOTS = config.slots.filter(s => s.name && s.name.trim() !== '');
   const ALL_PATCHES = config.patches.filter(p => p.src && p.src.trim() !== '');
   const TEXT_ZONE = config.textZone;
+
+  // FALLBACK: If no slots are configured (e.g. fresh install or Liquid error), inject defaults
+  if (SLOTS.length === 0) {
+    console.warn('PERSONALIZER: No slots found in config. Using JS Fallback defaults.');
+    SLOTS.push(
+      { id: "1", name: "Chest", groupId: "chest", top: 30, left: 30, width: 12 },
+      { id: "2", name: "Hip", groupId: "hip", top: 50, left: 30, width: 12 }
+    );
+  }
+
+  // FALLBACK: If no patches are configured, inject defaults
+  if (ALL_PATCHES.length === 0) {
+    console.warn('PERSONALIZER: No patches found in config. Using JS Fallback defaults.');
+    ALL_PATCHES.push(
+      { id: "p1", name: "Star Patch", groupId: "chest", src: "https://cdn.shopify.com/s/files/1/0664/3857/4839/files/patch-placeholder.png?v=1" },
+      { id: "p2", name: "Lightning Patch", groupId: "hip", src: "https://cdn.shopify.com/s/files/1/0664/3857/4839/files/patch-placeholder.png?v=1" }
+    );
+  }
 
   // State
   const state = {
