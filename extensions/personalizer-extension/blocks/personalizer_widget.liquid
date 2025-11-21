@@ -219,7 +219,7 @@
           id: "p1",
           name: {{ section.settings.patch_1_name | default: 'Patch 1' | json }},
           groupId: {{ section.settings.patch_1_group | default: "group1" | json }},
-          src: {{ section.settings.patch_1_img | image_url: width: 300 | default: "https://cdn.shopify.com/s/files/1/0664/3857/4839/files/patch-placeholder.png" | json }}
+          src: {{ section.settings.patch_1_img | image_url: width: 300 | default: "https://placehold.co/300x300?text=Patch+1" | json }}
         },
         {
           id: "p2",
@@ -307,5 +307,8 @@
         }
       ]
     };
+    console.log("LIQUID DEBUG: Slot 2 Name:", {{ section.settings.slot_2_name | json }});
+    console.log("LIQUID DEBUG: Patch 2 Src:", {{ section.settings.patch_2_img | image_url: width: 300 | json }});
+
   </script>
 </div>
