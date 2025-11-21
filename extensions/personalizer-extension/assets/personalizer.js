@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
   console.log('PERSONALIZER: Config Loaded', config);
 
-  const SLOTS = config.slots;
-  const ALL_PATCHES = config.patches;
+  const SLOTS = config.slots.filter(s => s.name && s.name.trim() !== '');
+  const ALL_PATCHES = config.patches.filter(p => p.src && p.src.trim() !== '');
   const TEXT_ZONE = config.textZone;
 
   // State
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (SLOTS.length === 0) {
       console.warn('PERSONALIZER: No slots found in config');
-      slotsContainer.innerHTML = '<p>No slots configured. Please add "Patch Slot" blocks in the Theme Editor.</p>';
+      slotsContainer.innerHTML = '<p>No slots configured. Please configure the "Personalizer Widget" settings in the Theme Editor.</p>';
       return;
     }
 

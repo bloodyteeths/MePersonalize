@@ -173,178 +173,138 @@
         left: {{ section.settings.text_left | default: 50 }}
       },
       slots: [
-        {% if section.settings.slot_1_name != blank %}
-          {
-            id: "1",
-            name: {{ section.settings.slot_1_name | json }},
-            groupId: {{ section.settings.slot_1_group | json }},
-            top: {{ section.settings.slot_1_top | default: 0 }},
-            left: {{ section.settings.slot_1_left | default: 0 }},
-            width: {{ section.settings.slot_1_width | default: 12 }}
-          },
-        {% endif %}
-        {% if section.settings.slot_2_name != blank %}
-          {
-            id: "2",
-            name: {{ section.settings.slot_2_name | json }},
-            groupId: {{ section.settings.slot_2_group | json }},
-            top: {{ section.settings.slot_2_top | default: 0 }},
-            left: {{ section.settings.slot_2_left | default: 0 }},
-            width: {{ section.settings.slot_2_width | default: 12 }}
-          },
-        {% endif %}
-        {% if section.settings.slot_3_name != blank %}
-          {
-            id: "3",
-            name: {{ section.settings.slot_3_name | json }},
-            groupId: {{ section.settings.slot_3_group | json }},
-            top: {{ section.settings.slot_3_top | default: 0 }},
-            left: {{ section.settings.slot_3_left | default: 0 }},
-            width: {{ section.settings.slot_3_width | default: 12 }}
-          },
-        {% endif %}
-        {% if section.settings.slot_4_name != blank %}
-          {
-            id: "4",
-            name: {{ section.settings.slot_4_name | json }},
-            groupId: {{ section.settings.slot_4_group | json }},
-            top: {{ section.settings.slot_4_top | default: 0 }},
-            left: {{ section.settings.slot_4_left | default: 0 }},
-            width: {{ section.settings.slot_4_width | default: 12 }}
-          },
-        {% endif %}
-        {% if section.settings.slot_5_name != blank %}
-          {
-            id: "5",
-            name: {{ section.settings.slot_5_name | json }},
-            groupId: {{ section.settings.slot_5_group | json }},
-            top: {{ section.settings.slot_5_top | default: 0 }},
-            left: {{ section.settings.slot_5_left | default: 0 }},
-            width: {{ section.settings.slot_5_width | default: 12 }}
-          },
-        {% endif %}
+        {
+          id: "1",
+          name: {{ section.settings.slot_1_name | json }},
+          groupId: {{ section.settings.slot_1_group | json }},
+          top: {{ section.settings.slot_1_top | default: 0 }},
+          left: {{ section.settings.slot_1_left | default: 0 }},
+          width: {{ section.settings.slot_1_width | default: 12 }}
+        },
+        {
+          id: "2",
+          name: {{ section.settings.slot_2_name | json }},
+          groupId: {{ section.settings.slot_2_group | json }},
+          top: {{ section.settings.slot_2_top | default: 0 }},
+          left: {{ section.settings.slot_2_left | default: 0 }},
+          width: {{ section.settings.slot_2_width | default: 12 }}
+        },
+        {
+          id: "3",
+          name: {{ section.settings.slot_3_name | json }},
+          groupId: {{ section.settings.slot_3_group | json }},
+          top: {{ section.settings.slot_3_top | default: 0 }},
+          left: {{ section.settings.slot_3_left | default: 0 }},
+          width: {{ section.settings.slot_3_width | default: 12 }}
+        },
+        {
+          id: "4",
+          name: {{ section.settings.slot_4_name | json }},
+          groupId: {{ section.settings.slot_4_group | json }},
+          top: {{ section.settings.slot_4_top | default: 0 }},
+          left: {{ section.settings.slot_4_left | default: 0 }},
+          width: {{ section.settings.slot_4_width | default: 12 }}
+        },
+        {
+          id: "5",
+          name: {{ section.settings.slot_5_name | json }},
+          groupId: {{ section.settings.slot_5_group | json }},
+          top: {{ section.settings.slot_5_top | default: 0 }},
+          left: {{ section.settings.slot_5_left | default: 0 }},
+          width: {{ section.settings.slot_5_width | default: 12 }}
+        }
       ],
       patches: [
-        {% if section.settings.patch_1_img != blank %}
-          {
-            id: "p1",
-            name: {{ section.settings.patch_1_name | default: 'Patch 1' | json }},
-            groupId: {{ section.settings.patch_1_group | json }},
-            src: {{ section.settings.patch_1_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_2_img != blank %}
-          {
-            id: "p2",
-            name: {{ section.settings.patch_2_name | default: 'Patch 2' | json }},
-            groupId: {{ section.settings.patch_2_group | json }},
-            src: {{ section.settings.patch_2_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_3_img != blank %}
-          {
-            id: "p3",
-            name: {{ section.settings.patch_3_name | default: 'Patch 3' | json }},
-            groupId: {{ section.settings.patch_3_group | json }},
-            src: {{ section.settings.patch_3_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_4_img != blank %}
-          {
-            id: "p4",
-            name: {{ section.settings.patch_4_name | default: 'Patch 4' | json }},
-            groupId: {{ section.settings.patch_4_group | json }},
-            src: {{ section.settings.patch_4_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_5_img != blank %}
-          {
-            id: "p5",
-            name: {{ section.settings.patch_5_name | default: 'Patch 5' | json }},
-            groupId: {{ section.settings.patch_5_group | json }},
-            src: {{ section.settings.patch_5_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_6_img != blank %}
-          {
-            id: "p6",
-            name: {{ section.settings.patch_6_name | default: 'Patch 6' | json }},
-            groupId: {{ section.settings.patch_6_group | json }},
-            src: {{ section.settings.patch_6_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_7_img != blank %}
-          {
-            id: "p7",
-            name: {{ section.settings.patch_7_name | default: 'Patch 7' | json }},
-            groupId: {{ section.settings.patch_7_group | json }},
-            src: {{ section.settings.patch_7_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_8_img != blank %}
-          {
-            id: "p8",
-            name: {{ section.settings.patch_8_name | default: 'Patch 8' | json }},
-            groupId: {{ section.settings.patch_8_group | json }},
-            src: {{ section.settings.patch_8_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_9_img != blank %}
-          {
-            id: "p9",
-            name: {{ section.settings.patch_9_name | default: 'Patch 9' | json }},
-            groupId: {{ section.settings.patch_9_group | json }},
-            src: {{ section.settings.patch_9_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_10_img != blank %}
-          {
-            id: "p10",
-            name: {{ section.settings.patch_10_name | default: 'Patch 10' | json }},
-            groupId: {{ section.settings.patch_10_group | json }},
-            src: {{ section.settings.patch_10_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_11_img != blank %}
-          {
-            id: "p11",
-            name: {{ section.settings.patch_11_name | default: 'Patch 11' | json }},
-            groupId: {{ section.settings.patch_11_group | json }},
-            src: {{ section.settings.patch_11_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_12_img != blank %}
-          {
-            id: "p12",
-            name: {{ section.settings.patch_12_name | default: 'Patch 12' | json }},
-            groupId: {{ section.settings.patch_12_group | json }},
-            src: {{ section.settings.patch_12_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_13_img != blank %}
-          {
-            id: "p13",
-            name: {{ section.settings.patch_13_name | default: 'Patch 13' | json }},
-            groupId: {{ section.settings.patch_13_group | json }},
-            src: {{ section.settings.patch_13_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_14_img != blank %}
-          {
-            id: "p14",
-            name: {{ section.settings.patch_14_name | default: 'Patch 14' | json }},
-            groupId: {{ section.settings.patch_14_group | json }},
-            src: {{ section.settings.patch_14_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
-        {% if section.settings.patch_15_img != blank %}
-          {
-            id: "p15",
-            name: {{ section.settings.patch_15_name | default: 'Patch 15' | json }},
-            groupId: {{ section.settings.patch_15_group | json }},
-            src: {{ section.settings.patch_15_img | image_url: width: 300 | json }}
-          },
-        {% endif %}
+        {
+          id: "p1",
+          name: {{ section.settings.patch_1_name | default: 'Patch 1' | json }},
+          groupId: {{ section.settings.patch_1_group | json }},
+          src: {{ section.settings.patch_1_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p2",
+          name: {{ section.settings.patch_2_name | default: 'Patch 2' | json }},
+          groupId: {{ section.settings.patch_2_group | json }},
+          src: {{ section.settings.patch_2_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p3",
+          name: {{ section.settings.patch_3_name | default: 'Patch 3' | json }},
+          groupId: {{ section.settings.patch_3_group | json }},
+          src: {{ section.settings.patch_3_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p4",
+          name: {{ section.settings.patch_4_name | default: 'Patch 4' | json }},
+          groupId: {{ section.settings.patch_4_group | json }},
+          src: {{ section.settings.patch_4_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p5",
+          name: {{ section.settings.patch_5_name | default: 'Patch 5' | json }},
+          groupId: {{ section.settings.patch_5_group | json }},
+          src: {{ section.settings.patch_5_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p6",
+          name: {{ section.settings.patch_6_name | default: 'Patch 6' | json }},
+          groupId: {{ section.settings.patch_6_group | json }},
+          src: {{ section.settings.patch_6_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p7",
+          name: {{ section.settings.patch_7_name | default: 'Patch 7' | json }},
+          groupId: {{ section.settings.patch_7_group | json }},
+          src: {{ section.settings.patch_7_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p8",
+          name: {{ section.settings.patch_8_name | default: 'Patch 8' | json }},
+          groupId: {{ section.settings.patch_8_group | json }},
+          src: {{ section.settings.patch_8_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p9",
+          name: {{ section.settings.patch_9_name | default: 'Patch 9' | json }},
+          groupId: {{ section.settings.patch_9_group | json }},
+          src: {{ section.settings.patch_9_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p10",
+          name: {{ section.settings.patch_10_name | default: 'Patch 10' | json }},
+          groupId: {{ section.settings.patch_10_group | json }},
+          src: {{ section.settings.patch_10_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p11",
+          name: {{ section.settings.patch_11_name | default: 'Patch 11' | json }},
+          groupId: {{ section.settings.patch_11_group | json }},
+          src: {{ section.settings.patch_11_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p12",
+          name: {{ section.settings.patch_12_name | default: 'Patch 12' | json }},
+          groupId: {{ section.settings.patch_12_group | json }},
+          src: {{ section.settings.patch_12_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p13",
+          name: {{ section.settings.patch_13_name | default: 'Patch 13' | json }},
+          groupId: {{ section.settings.patch_13_group | json }},
+          src: {{ section.settings.patch_13_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p14",
+          name: {{ section.settings.patch_14_name | default: 'Patch 14' | json }},
+          groupId: {{ section.settings.patch_14_group | json }},
+          src: {{ section.settings.patch_14_img | image_url: width: 300 | json }}
+        },
+        {
+          id: "p15",
+          name: {{ section.settings.patch_15_name | default: 'Patch 15' | json }},
+          groupId: {{ section.settings.patch_15_group | json }},
+          src: {{ section.settings.patch_15_img | image_url: width: 300 | json }}
+        }
       ]
     };
   </script>
