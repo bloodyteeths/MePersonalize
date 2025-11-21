@@ -10,6 +10,110 @@
       "id": "heading",
       "label": "Heading",
       "default": "Personalize Your Racer"
+    },
+    {
+      "type": "header",
+      "content": "Text Options"
+    },
+    {
+      "type": "range",
+      "id": "text_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Text Vertical Position",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "text_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Text Horizontal Position",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "patch_slot",
+      "name": "Patch Slot",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slot Name",
+          "default": "Chest"
+        },
+        {
+          "type": "text",
+          "id": "group_id",
+          "label": "Patch Group ID",
+          "info": "Only patches with this same Group ID will appear in this slot. (e.g. 'chest', 'arm')",
+          "default": "chest"
+        },
+        {
+          "type": "header",
+          "content": "Positioning"
+        },
+        {
+          "type": "range",
+          "id": "pos_top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Top Position",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "pos_left",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Left Position",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "width",
+          "min": 5,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Patch Width",
+          "default": 12
+        }
+      ]
+    },
+    {
+      "type": "patch_option",
+      "name": "Patch Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Patch Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Patch Name",
+          "default": "Flag"
+        },
+        {
+          "type": "text",
+          "id": "group_id",
+          "label": "Group ID",
+          "info": "Must match the Slot's Group ID to appear there.",
+          "default": "chest"
+        }
+      ]
     }
   ]
 }
@@ -32,7 +136,7 @@
     <!-- Controls Area -->
     <div class="personalizer-controls">
       <div class="patch-selectors">
-        <h3>Select Your Patches (5 Free!)</h3>
+        <h3>Select Your Patches</h3>
         <div id="patch-slots">
           <!-- Slot selectors will be generated here -->
         </div>
@@ -46,10 +150,42 @@
   </div>
   
   <!-- Hidden inputs for form submission -->
-  <input type="hidden" name="properties[Patch 1]" id="prop-patch-1">
-  <input type="hidden" name="properties[Patch 2]" id="prop-patch-2">
-  <input type="hidden" name="properties[Patch 3]" id="prop-patch-3">
-  <input type="hidden" name="properties[Patch 4]" id="prop-patch-4">
-  <input type="hidden" name="properties[Patch 5]" id="prop-patch-5">
+  <div id="hidden-inputs-container"></div>
   <input type="hidden" name="properties[Embroidery Text]" id="prop-text">
+
+  <!-- Data Injection -->
+  <script>
+    window.PERSONALIZER_CONFIG = {
+      textZone: {
+        top: {{ section.settings.text_top | default: 25 }},
+        left: {{ section.settings.text_left | default: 50 }}
+      },
+      slots: [
+        {% for block in section.blocks %}
+          {% if block.type == 'patch_slot' %}
+            {
+              id: "{{ block.id }}",
+              name: "{{ block.settings.title }}",
+              groupId: "{{ block.settings.group_id }}",
+              top: {{ block.settings.pos_top }},
+              left: {{ block.settings.pos_left }},
+              width: {{ block.settings.width }}
+            },
+          {% endif %}
+        {% endfor %}
+      ],
+      patches: [
+        {% for block in section.blocks %}
+          {% if block.type == 'patch_option' and block.settings.image != blank %}
+            {
+              id: "{{ block.id }}",
+              name: "{{ block.settings.title }}",
+              groupId: "{{ block.settings.group_id }}",
+              src: "{{ block.settings.image | img_url: '300x' }}"
+            },
+          {% endif %}
+        {% endfor %}
+      ]
+    };
+  </script>
 </div>
