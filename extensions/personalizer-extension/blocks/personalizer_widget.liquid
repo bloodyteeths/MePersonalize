@@ -175,10 +175,10 @@
       slots: [
         {
           id: "1",
-          name: {{ section.settings.slot_1_name | json }},
-          groupId: {{ section.settings.slot_1_group | json }},
-          top: {{ section.settings.slot_1_top | default: 0 }},
-          left: {{ section.settings.slot_1_left | default: 0 }},
+          name: {{ section.settings.slot_1_name | default: "Chest" | json }},
+          groupId: {{ section.settings.slot_1_group | default: "group1" | json }},
+          top: {{ section.settings.slot_1_top | default: 30 }},
+          left: {{ section.settings.slot_1_left | default: 30 }},
           width: {{ section.settings.slot_1_width | default: 12 }}
         },
         {
@@ -218,8 +218,8 @@
         {
           id: "p1",
           name: {{ section.settings.patch_1_name | default: 'Patch 1' | json }},
-          groupId: {{ section.settings.patch_1_group | json }},
-          src: {{ section.settings.patch_1_img | image_url: width: 300 | json }}
+          groupId: {{ section.settings.patch_1_group | default: "group1" | json }},
+          src: {{ section.settings.patch_1_img | image_url: width: 300 | default: "https://cdn.shopify.com/s/files/1/0664/3857/4839/files/patch-placeholder.png" | json }}
         },
         {
           id: "p2",
