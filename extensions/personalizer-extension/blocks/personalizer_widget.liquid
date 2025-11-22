@@ -238,7 +238,7 @@
           id: "p1",
           name: {{ section.settings.patch_1_name | default: 'Patch 1' | json }},
           groupId: {{ section.settings.patch_1_group | default: "chest" | json }},
-          src: {{ section.settings.patch_1_img | json }}
+          src: "{{ section.settings.patch_1_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_2_img != blank %}
@@ -246,7 +246,7 @@
           id: "p2",
           name: {{ section.settings.patch_2_name | default: 'Patch 2' | json }},
           groupId: {{ section.settings.patch_2_group | default: "chest" | json }},
-          src: {{ section.settings.patch_2_img | json }}
+          src: "{{ section.settings.patch_2_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_3_img != blank %}
@@ -254,7 +254,7 @@
           id: "p3",
           name: {{ section.settings.patch_3_name | default: 'Patch 3' | json }},
           groupId: {{ section.settings.patch_3_group | default: "chest" | json }},
-          src: {{ section.settings.patch_3_img | json }}
+          src: "{{ section.settings.patch_3_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_4_img != blank %}
@@ -262,7 +262,7 @@
           id: "p4",
           name: {{ section.settings.patch_4_name | default: 'Patch 4' | json }},
           groupId: {{ section.settings.patch_4_group | default: "chest" | json }},
-          src: {{ section.settings.patch_4_img | json }}
+          src: "{{ section.settings.patch_4_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_5_img != blank %}
@@ -270,7 +270,7 @@
           id: "p5",
           name: {{ section.settings.patch_5_name | default: 'Patch 5' | json }},
           groupId: {{ section.settings.patch_5_group | default: "chest" | json }},
-          src: {{ section.settings.patch_5_img | json }}
+          src: "{{ section.settings.patch_5_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_6_img != blank %}
@@ -278,7 +278,7 @@
           id: "p6",
           name: {{ section.settings.patch_6_name | default: 'Patch 6' | json }},
           groupId: {{ section.settings.patch_6_group | default: "hip" | json }},
-          src: {{ section.settings.patch_6_img | json }}
+          src: "{{ section.settings.patch_6_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_7_img != blank %}
@@ -286,7 +286,7 @@
           id: "p7",
           name: {{ section.settings.patch_7_name | default: 'Patch 7' | json }},
           groupId: {{ section.settings.patch_7_group | default: "hip" | json }},
-          src: {{ section.settings.patch_7_img | json }}
+          src: "{{ section.settings.patch_7_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_8_img != blank %}
@@ -294,7 +294,7 @@
           id: "p8",
           name: {{ section.settings.patch_8_name | default: 'Patch 8' | json }},
           groupId: {{ section.settings.patch_8_group | default: "hip" | json }},
-          src: {{ section.settings.patch_8_img | json }}
+          src: "{{ section.settings.patch_8_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_9_img != blank %}
@@ -302,7 +302,7 @@
           id: "p9",
           name: {{ section.settings.patch_9_name | default: 'Patch 9' | json }},
           groupId: {{ section.settings.patch_9_group | default: "hip" | json }},
-          src: {{ section.settings.patch_9_img | json }}
+          src: "{{ section.settings.patch_9_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_10_img != blank %}
@@ -310,7 +310,7 @@
           id: "p10",
           name: {{ section.settings.patch_10_name | default: 'Patch 10' | json }},
           groupId: {{ section.settings.patch_10_group | default: "hat" | json }},
-          src: {{ section.settings.patch_10_img | json }}
+          src: "{{ section.settings.patch_10_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_11_img != blank %}
@@ -318,7 +318,7 @@
           id: "p11",
           name: {{ section.settings.patch_11_name | default: 'Patch 11' | json }},
           groupId: {{ section.settings.patch_11_group | default: "other" | json }},
-          src: {{ section.settings.patch_11_img | json }}
+          src: "{{ section.settings.patch_11_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_12_img != blank %}
@@ -326,7 +326,7 @@
           id: "p12",
           name: {{ section.settings.patch_12_name | default: 'Patch 12' | json }},
           groupId: {{ section.settings.patch_12_group | default: "other" | json }},
-          src: {{ section.settings.patch_12_img | json }}
+          src: "{{ section.settings.patch_12_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_13_img != blank %}
@@ -334,7 +334,7 @@
           id: "p13",
           name: {{ section.settings.patch_13_name | default: 'Patch 13' | json }},
           groupId: {{ section.settings.patch_13_group | default: "other" | json }},
-          src: {{ section.settings.patch_13_img | json }}
+          src: "{{ section.settings.patch_13_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_14_img != blank %}
@@ -342,7 +342,7 @@
           id: "p14",
           name: {{ section.settings.patch_14_name | default: 'Patch 14' | json }},
           groupId: {{ section.settings.patch_14_group | default: "other" | json }},
-          src: {{ section.settings.patch_14_img | json }}
+          src: "{{ section.settings.patch_14_img | image_url: width: 300 }}"
         },
         {% endif %}
         {% if section.settings.patch_15_img != blank %}
@@ -350,36 +350,17 @@
           id: "p15",
           name: {{ section.settings.patch_15_name | default: 'Patch 15' | json }},
           groupId: {{ section.settings.patch_15_group | default: "other" | json }},
-          src: {{ section.settings.patch_15_img | json }}
+          src: "{{ section.settings.patch_15_img | image_url: width: 300 }}"
         }
         {% endif %}
       ]
     };
-    console.log("LIQUID DEBUG: Slot 2 Name:", {{ section.settings.slot_2_name | json }});
-    console.log("LIQUID DEBUG: Patch 2 Src:", {{ section.settings.patch_2_img | image_url: width: 300 | json }});
-
     // COMPREHENSIVE DEBUG LOGGING
+    console.log('PERSONALIZER: VERSION 19 LOADED');
     console.log('=== PERSONALIZER DEBUG START ===');
     console.log('Full Config:', window.PERSONALIZER_CONFIG);
     console.log('Total Slots:', window.PERSONALIZER_CONFIG.slots.length);
     console.log('Total Patches:', window.PERSONALIZER_CONFIG.patches.length);
-    
-    // Log each patch with details
-    window.PERSONALIZER_CONFIG.patches.forEach((patch, index) => {
-      console.log(`Patch ${index + 1}:`, {
-        id: patch.id,
-        name: patch.name,
-        groupId: patch.groupId,
-        src: patch.src,
-        srcLength: patch.src ? patch.src.length : 0
-      });
-    });
-    
-    // Log Liquid values directly
-    console.log('LIQUID DEBUG - Patch 1 Image:', {{ section.settings.patch_1_img | json }});
-    console.log('LIQUID DEBUG - Patch 1 Image URL:', {{ section.settings.patch_1_img | image_url: width: 300 | json }});
-    console.log('LIQUID DEBUG - Patch 2 Image:', {{ section.settings.patch_2_img | json }});
-    console.log('LIQUID DEBUG - Patch 2 Image URL:', {{ section.settings.patch_2_img | image_url: width: 300 | json }});
     console.log('=== PERSONALIZER DEBUG END ===');
 
   </script>
