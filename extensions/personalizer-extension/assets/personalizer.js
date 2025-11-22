@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
   console.log('PERSONALIZER: Raw Config Loaded', config);
 
-  const SLOTS = config.slots.filter(s => s.name && s.name.trim() !== '');
+  // Don't filter out slots with empty names - just use all configured slots
+  const SLOTS = config.slots || [];
   const ALL_PATCHES = config.patches.filter(p => p.src && p.src.trim() !== '');
   const TEXT_ZONE = config.textZone;
 
