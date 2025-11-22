@@ -233,7 +233,7 @@
         }
       ],
       patches: [
-        {% if section.settings.patch_1_img %}
+        {% if section.settings.patch_1_img != blank %}
         {
           id: "p1",
           name: {{ section.settings.patch_1_name | default: 'Patch 1' | json }},
@@ -241,7 +241,7 @@
           src: {{ section.settings.patch_1_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_2_img %}
+        {% if section.settings.patch_2_img != blank %}
         {
           id: "p2",
           name: {{ section.settings.patch_2_name | default: 'Patch 2' | json }},
@@ -249,7 +249,7 @@
           src: {{ section.settings.patch_2_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_3_img %}
+        {% if section.settings.patch_3_img != blank %}
         {
           id: "p3",
           name: {{ section.settings.patch_3_name | default: 'Patch 3' | json }},
@@ -257,7 +257,7 @@
           src: {{ section.settings.patch_3_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_4_img %}
+        {% if section.settings.patch_4_img != blank %}
         {
           id: "p4",
           name: {{ section.settings.patch_4_name | default: 'Patch 4' | json }},
@@ -265,7 +265,7 @@
           src: {{ section.settings.patch_4_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_5_img %}
+        {% if section.settings.patch_5_img != blank %}
         {
           id: "p5",
           name: {{ section.settings.patch_5_name | default: 'Patch 5' | json }},
@@ -273,7 +273,7 @@
           src: {{ section.settings.patch_5_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_6_img %}
+        {% if section.settings.patch_6_img != blank %}
         {
           id: "p6",
           name: {{ section.settings.patch_6_name | default: 'Patch 6' | json }},
@@ -281,7 +281,7 @@
           src: {{ section.settings.patch_6_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_7_img %}
+        {% if section.settings.patch_7_img != blank %}
         {
           id: "p7",
           name: {{ section.settings.patch_7_name | default: 'Patch 7' | json }},
@@ -289,7 +289,7 @@
           src: {{ section.settings.patch_7_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_8_img %}
+        {% if section.settings.patch_8_img != blank %}
         {
           id: "p8",
           name: {{ section.settings.patch_8_name | default: 'Patch 8' | json }},
@@ -297,7 +297,7 @@
           src: {{ section.settings.patch_8_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_9_img %}
+        {% if section.settings.patch_9_img != blank %}
         {
           id: "p9",
           name: {{ section.settings.patch_9_name | default: 'Patch 9' | json }},
@@ -305,7 +305,7 @@
           src: {{ section.settings.patch_9_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_10_img %}
+        {% if section.settings.patch_10_img != blank %}
         {
           id: "p10",
           name: {{ section.settings.patch_10_name | default: 'Patch 10' | json }},
@@ -313,7 +313,7 @@
           src: {{ section.settings.patch_10_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_11_img %}
+        {% if section.settings.patch_11_img != blank %}
         {
           id: "p11",
           name: {{ section.settings.patch_11_name | default: 'Patch 11' | json }},
@@ -321,7 +321,7 @@
           src: {{ section.settings.patch_11_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_12_img %}
+        {% if section.settings.patch_12_img != blank %}
         {
           id: "p12",
           name: {{ section.settings.patch_12_name | default: 'Patch 12' | json }},
@@ -329,7 +329,7 @@
           src: {{ section.settings.patch_12_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_13_img %}
+        {% if section.settings.patch_13_img != blank %}
         {
           id: "p13",
           name: {{ section.settings.patch_13_name | default: 'Patch 13' | json }},
@@ -337,7 +337,7 @@
           src: {{ section.settings.patch_13_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_14_img %}
+        {% if section.settings.patch_14_img != blank %}
         {
           id: "p14",
           name: {{ section.settings.patch_14_name | default: 'Patch 14' | json }},
@@ -345,7 +345,7 @@
           src: {{ section.settings.patch_14_img | image_url: width: 300 | json }}
         },
         {% endif %}
-        {% if section.settings.patch_15_img %}
+        {% if section.settings.patch_15_img != blank %}
         {
           id: "p15",
           name: {{ section.settings.patch_15_name | default: 'Patch 15' | json }},
