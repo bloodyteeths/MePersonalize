@@ -3,13 +3,18 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!container) return;
 
   // Load Config from Liquid
+  // Load Config from Liquid
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
   console.log('PERSONALIZER: Raw Config Loaded', config);
+  console.log('PERSONALIZER: JS VERSION 20 LOADED (Refactored)');
 
-  // Don't filter out slots with empty names - just use all configured slots
-  const SLOTS = config.slots || [];
-  const ALL_PATCHES = config.patches.filter(p => p.src && p.src.trim() !== '');
-  const TEXT_ZONE = config.textZone;
+  // Filter slots to ensure they have an ID and Name
+  const SLOTS = (config.slots || []).filter(s => s.id && s.name);
+
+  // Filter patches to ensure they have an ID and Src
+  const ALL_PATCHES = (config.patches || []).filter(p => p.id && p.src && p.src.trim() !== '');
+
+  const TEXT_ZONE = config.textZone || { top: 25, left: 50 };
 
   // FALLBACK: If no slots are configured (e.g. fresh install or Liquid error), inject defaults
   if (SLOTS.length === 0) {
