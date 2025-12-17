@@ -141,7 +141,47 @@
 
     { "type": "image_picker", "id": "patch_15_img", "label": "Patch 15 Image" },
     { "type": "text", "id": "patch_15_name", "label": "Patch 15 Name" },
-    { "type": "text", "id": "patch_15_group", "label": "Patch 15 Group" }
+    { "type": "text", "id": "patch_15_group", "label": "Patch 15 Group" },
+
+    { "type": "image_picker", "id": "patch_16_img", "label": "Patch 16 Image" },
+    { "type": "text", "id": "patch_16_name", "label": "Patch 16 Name" },
+    { "type": "text", "id": "patch_16_group", "label": "Patch 16 Group" },
+
+    { "type": "image_picker", "id": "patch_17_img", "label": "Patch 17 Image" },
+    { "type": "text", "id": "patch_17_name", "label": "Patch 17 Name" },
+    { "type": "text", "id": "patch_17_group", "label": "Patch 17 Group" },
+
+    { "type": "image_picker", "id": "patch_18_img", "label": "Patch 18 Image" },
+    { "type": "text", "id": "patch_18_name", "label": "Patch 18 Name" },
+    { "type": "text", "id": "patch_18_group", "label": "Patch 18 Group" },
+
+    { "type": "image_picker", "id": "patch_19_img", "label": "Patch 19 Image" },
+    { "type": "text", "id": "patch_19_name", "label": "Patch 19 Name" },
+    { "type": "text", "id": "patch_19_group", "label": "Patch 19 Group" },
+
+    { "type": "image_picker", "id": "patch_20_img", "label": "Patch 20 Image" },
+    { "type": "text", "id": "patch_20_name", "label": "Patch 20 Name" },
+    { "type": "text", "id": "patch_20_group", "label": "Patch 20 Group" },
+
+    { "type": "image_picker", "id": "patch_21_img", "label": "Patch 21 Image" },
+    { "type": "text", "id": "patch_21_name", "label": "Patch 21 Name" },
+    { "type": "text", "id": "patch_21_group", "label": "Patch 21 Group" },
+
+    { "type": "image_picker", "id": "patch_22_img", "label": "Patch 22 Image" },
+    { "type": "text", "id": "patch_22_name", "label": "Patch 22 Name" },
+    { "type": "text", "id": "patch_22_group", "label": "Patch 22 Group" },
+
+    { "type": "image_picker", "id": "patch_23_img", "label": "Patch 23 Image" },
+    { "type": "text", "id": "patch_23_name", "label": "Patch 23 Name" },
+    { "type": "text", "id": "patch_23_group", "label": "Patch 23 Group" },
+
+    { "type": "image_picker", "id": "patch_24_img", "label": "Patch 24 Image" },
+    { "type": "text", "id": "patch_24_name", "label": "Patch 24 Name" },
+    { "type": "text", "id": "patch_24_group", "label": "Patch 24 Group" },
+
+    { "type": "image_picker", "id": "patch_25_img", "label": "Patch 25 Image" },
+    { "type": "text", "id": "patch_25_name", "label": "Patch 25 Name" },
+    { "type": "text", "id": "patch_25_group", "label": "Patch 25 Group" }
   ]
 }
 {% endschema %}
@@ -153,7 +193,8 @@
     <!-- Preview Area -->
     <div class="personalizer-preview">
       <div class="preview-wrapper">
-        <img src="{{ product.featured_image | image_url: width: 800 }}" width="800" height="800" alt="Base Product" class="base-image" id="base-product-image">
+        {% assign preview_image = product.images[1] | default: product.featured_image %}
+        <img src="{{ preview_image | image_url: width: 800 }}" width="800" height="800" alt="Base Product" class="base-image" id="base-product-image">
         <div id="preview-overlay">
             <!-- Patches will be injected here -->
         </div>
@@ -384,8 +425,98 @@
     });
     {% endif %}
 
+    {% if block.settings.patch_16_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p16",
+      name: {{ block.settings.patch_16_name | default: 'Patch 16' | json }},
+      groupId: {{ block.settings.patch_16_group | default: "other" | json }},
+      src: "{{ block.settings.patch_16_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_17_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p17",
+      name: {{ block.settings.patch_17_name | default: 'Patch 17' | json }},
+      groupId: {{ block.settings.patch_17_group | default: "other" | json }},
+      src: "{{ block.settings.patch_17_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_18_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p18",
+      name: {{ block.settings.patch_18_name | default: 'Patch 18' | json }},
+      groupId: {{ block.settings.patch_18_group | default: "other" | json }},
+      src: "{{ block.settings.patch_18_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_19_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p19",
+      name: {{ block.settings.patch_19_name | default: 'Patch 19' | json }},
+      groupId: {{ block.settings.patch_19_group | default: "other" | json }},
+      src: "{{ block.settings.patch_19_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_20_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p20",
+      name: {{ block.settings.patch_20_name | default: 'Patch 20' | json }},
+      groupId: {{ block.settings.patch_20_group | default: "other" | json }},
+      src: "{{ block.settings.patch_20_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_21_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p21",
+      name: {{ block.settings.patch_21_name | default: 'Patch 21' | json }},
+      groupId: {{ block.settings.patch_21_group | default: "other" | json }},
+      src: "{{ block.settings.patch_21_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_22_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p22",
+      name: {{ block.settings.patch_22_name | default: 'Patch 22' | json }},
+      groupId: {{ block.settings.patch_22_group | default: "other" | json }},
+      src: "{{ block.settings.patch_22_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_23_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p23",
+      name: {{ block.settings.patch_23_name | default: 'Patch 23' | json }},
+      groupId: {{ block.settings.patch_23_group | default: "other" | json }},
+      src: "{{ block.settings.patch_23_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_24_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p24",
+      name: {{ block.settings.patch_24_name | default: 'Patch 24' | json }},
+      groupId: {{ block.settings.patch_24_group | default: "other" | json }},
+      src: "{{ block.settings.patch_24_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
+    {% if block.settings.patch_25_img != blank %}
+    window.PERSONALIZER_CONFIG.patches.push({
+      id: "p25",
+      name: {{ block.settings.patch_25_name | default: 'Patch 25' | json }},
+      groupId: {{ block.settings.patch_25_group | default: "other" | json }},
+      src: "{{ block.settings.patch_25_img | image_url: width: 300 }}"
+    });
+    {% endif %}
+
     // COMPREHENSIVE DEBUG LOGGING
-    console.log('PERSONALIZER: VERSION 21 LOADED (Block Settings Fix)');
+    console.log('PERSONALIZER: VERSION 22 LOADED (Dropdown UI, 25 patches, 2nd image)');
     console.log('=== PERSONALIZER DEBUG START ===');
     console.log('Full Config:', window.PERSONALIZER_CONFIG);
     console.log('Total Slots:', window.PERSONALIZER_CONFIG.slots.length);

@@ -80,28 +80,48 @@
   margin-bottom: 5px;
 }
 
-.patch-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
+.patch-dropdown-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.patch-option {
-  border: 2px solid #ddd;
+.patch-dropdown {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  background: #fff;
   cursor: pointer;
-  padding: 2px;
 }
 
-.patch-option.selected {
+.patch-dropdown:focus {
+  outline: none;
   border-color: #d32f2f;
-  /* Racing red */
 }
 
-.patch-option img {
+.patch-preview-thumbnail {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+}
+
+.patch-preview-thumbnail img {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  background: transparent;
+}
+
+/* Ensure patch images display with transparency - no dotted/grey background */
+.patch-element,
+.patch-preview-thumbnail img,
+.patch-option img {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 #embroidery-text {

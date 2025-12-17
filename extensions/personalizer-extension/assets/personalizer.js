@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Load Config from Liquid
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
   console.log('PERSONALIZER: Raw Config Loaded', config);
-  console.log('PERSONALIZER: JS VERSION 20 LOADED (Refactored)');
+  console.log('PERSONALIZER: JS VERSION 22 LOADED (Dropdown UI)');
 
   // Filter slots to ensure they have an ID and Name
   const SLOTS = (config.slots || []).filter(s => s.id && s.name);
@@ -79,13 +79,16 @@ document.addEventListener('DOMContentLoaded', function () {
       slotDiv.className = 'patch-slot-control';
       slotDiv.innerHTML = `
         <label>${slot.name}</label>
-        <div class="patch-grid" data-slot-id="${slot.id}">
-          ${availablePatches.length > 0 ? availablePatches.map(patch => `
-            <div class="patch-option" data-patch-id="${patch.id}" onclick="selectPatch('${slot.id}', '${patch.id}')">
-              <img src="${patch.src}" alt="${patch.name}">
-              <span class="patch-name">${patch.name}</span>
-            </div>
-          `).join('') : '<p class="no-patches">No patches found for group "' + slot.groupId + '"</p>'}
+        <div class="patch-dropdown-container" data-slot-id="${slot.id}">
+          <select class="patch-dropdown" onchange="selectPatchFromDropdown('${slot.id}', this.value)">
+            <option value="">-- Select a patch --</option>
+            ${availablePatches.map(patch => `
+              <option value="${patch.id}" data-src="${patch.src}">${patch.name}</option>
+            `).join('')}
+          </select>
+          <div class="patch-preview-thumbnail">
+            <img src="" alt="Selected patch preview" style="display: none;">
+          </div>
         </div>
       `;
       slotsContainer.appendChild(slotDiv);
@@ -102,26 +105,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  window.selectPatch = function (slotId, patchId) {
+  window.selectPatchFromDropdown = function (slotId, patchId) {
     console.log(`PERSONALIZER: Selecting patch ${patchId} for slot ${slotId}`);
-    // Toggle: if already selected, deselect
-    if (state.slots[slotId] === patchId) {
-      state.slots[slotId] = null;
-    } else {
-      state.slots[slotId] = patchId;
-    }
 
-    // Update UI selection state
-    const grid = document.querySelector(`.patch-grid[data-slot-id="${slotId}"]`);
-    if (grid) {
-      grid.querySelectorAll('.patch-option').forEach(opt => opt.classList.remove('selected'));
-      if (state.slots[slotId]) {
-        grid.querySelector(`.patch-option[data-patch-id="${patchId}"]`).classList.add('selected');
+    // Set the selected patch (empty string means deselect)
+    state.slots[slotId] = patchId || null;
+
+    // Update thumbnail preview next to dropdown
+    const container = document.querySelector(`.patch-dropdown-container[data-slot-id="${slotId}"]`);
+    if (container) {
+      const thumbnailImg = container.querySelector('.patch-preview-thumbnail img');
+      if (thumbnailImg) {
+        if (patchId) {
+          const patch = ALL_PATCHES.find(p => p.id === patchId);
+          if (patch) {
+            thumbnailImg.src = patch.src;
+            thumbnailImg.style.display = 'block';
+          }
+        } else {
+          thumbnailImg.src = '';
+          thumbnailImg.style.display = 'none';
+        }
       }
     }
 
     updatePreview();
     updateFormInputs();
+  };
+
+  // Legacy function for backwards compatibility
+  window.selectPatch = function (slotId, patchId) {
+    window.selectPatchFromDropdown(slotId, patchId);
   };
 
   function updatePreview() {
