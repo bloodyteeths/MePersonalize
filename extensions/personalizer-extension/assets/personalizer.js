@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Load Config from Liquid
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
   console.log('PERSONALIZER: Raw Config Loaded', config);
-  console.log('PERSONALIZER: JS VERSION 22 LOADED (Dropdown UI)');
+  console.log('PERSONALIZER: JS VERSION 23 LOADED (Custom dropdown with images)');
 
   // Filter slots to ensure they have an ID and Name
   const SLOTS = (config.slots || []).filter(s => s.id && s.name);
@@ -79,15 +79,21 @@ document.addEventListener('DOMContentLoaded', function () {
       slotDiv.className = 'patch-slot-control';
       slotDiv.innerHTML = `
         <label>${slot.name}</label>
-        <div class="patch-dropdown-container" data-slot-id="${slot.id}">
-          <select class="patch-dropdown" onchange="selectPatchFromDropdown('${slot.id}', this.value)">
-            <option value="">-- Select a patch --</option>
+        <div class="custom-dropdown" data-slot-id="${slot.id}">
+          <div class="custom-dropdown-selected" onclick="toggleDropdown('${slot.id}')">
+            <span class="selected-text">-- Select a patch --</span>
+            <span class="dropdown-arrow">▼</span>
+          </div>
+          <div class="custom-dropdown-options" id="dropdown-options-${slot.id}">
+            <div class="custom-dropdown-option" data-patch-id="" onclick="selectPatchFromDropdown('${slot.id}', '')">
+              <span class="option-text">-- None --</span>
+            </div>
             ${availablePatches.map(patch => `
-              <option value="${patch.id}" data-src="${patch.src}">${patch.name}</option>
+              <div class="custom-dropdown-option" data-patch-id="${patch.id}" onclick="selectPatchFromDropdown('${slot.id}', '${patch.id}')">
+                <img src="${patch.src}" alt="${patch.name}">
+                <span class="option-text">${patch.name}</span>
+              </div>
             `).join('')}
-          </select>
-          <div class="patch-preview-thumbnail">
-            <img src="" alt="Selected patch preview" style="display: none;">
           </div>
         </div>
       `;
@@ -105,28 +111,60 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  window.toggleDropdown = function (slotId) {
+    const options = document.getElementById(`dropdown-options-${slotId}`);
+    const allOptions = document.querySelectorAll('.custom-dropdown-options');
+
+    // Close all other dropdowns
+    allOptions.forEach(opt => {
+      if (opt.id !== `dropdown-options-${slotId}`) {
+        opt.classList.remove('open');
+      }
+    });
+
+    // Toggle this dropdown
+    options.classList.toggle('open');
+  };
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.custom-dropdown')) {
+      document.querySelectorAll('.custom-dropdown-options').forEach(opt => {
+        opt.classList.remove('open');
+      });
+    }
+  });
+
   window.selectPatchFromDropdown = function (slotId, patchId) {
     console.log(`PERSONALIZER: Selecting patch ${patchId} for slot ${slotId}`);
 
     // Set the selected patch (empty string means deselect)
     state.slots[slotId] = patchId || null;
 
-    // Update thumbnail preview next to dropdown
-    const container = document.querySelector(`.patch-dropdown-container[data-slot-id="${slotId}"]`);
-    if (container) {
-      const thumbnailImg = container.querySelector('.patch-preview-thumbnail img');
-      if (thumbnailImg) {
-        if (patchId) {
-          const patch = ALL_PATCHES.find(p => p.id === patchId);
-          if (patch) {
-            thumbnailImg.src = patch.src;
-            thumbnailImg.style.display = 'block';
-          }
-        } else {
-          thumbnailImg.src = '';
-          thumbnailImg.style.display = 'none';
+    // Update the custom dropdown display
+    const dropdown = document.querySelector(`.custom-dropdown[data-slot-id="${slotId}"]`);
+    if (dropdown) {
+      const selectedDisplay = dropdown.querySelector('.custom-dropdown-selected');
+      const options = dropdown.querySelector('.custom-dropdown-options');
+
+      if (patchId) {
+        const patch = ALL_PATCHES.find(p => p.id === patchId);
+        if (patch) {
+          selectedDisplay.innerHTML = `
+            <img src="${patch.src}" alt="${patch.name}" class="selected-patch-img">
+            <span class="selected-text">${patch.name}</span>
+            <span class="dropdown-arrow">▼</span>
+          `;
         }
+      } else {
+        selectedDisplay.innerHTML = `
+          <span class="selected-text">-- Select a patch --</span>
+          <span class="dropdown-arrow">▼</span>
+        `;
       }
+
+      // Close the dropdown
+      options.classList.remove('open');
     }
 
     updatePreview();
