@@ -14,105 +14,44 @@
 
     {
       "type": "header",
-      "content": "Front Text Position"
+      "content": "Text Positions"
     },
-    {
-      "type": "range",
-      "id": "text_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "label": "Vertical Position",
-      "default": 25
-    },
-    {
-      "type": "range",
-      "id": "text_left",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "label": "Horizontal Position",
-      "default": 50
-    },
+    { "type": "range", "id": "text_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Front Text Top", "default": 25 },
+    { "type": "range", "id": "text_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Front Text Left", "default": 50 },
+    { "type": "range", "id": "back_text_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Back Text Top", "default": 30 },
+    { "type": "range", "id": "back_text_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Back Text Left", "default": 50 },
 
     {
       "type": "header",
-      "content": "Back Text Settings"
+      "content": "Slot 1-3 Positions"
     },
-    {
-      "type": "range",
-      "id": "back_text_top",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "label": "Back Text Vertical",
-      "default": 30
-    },
-    {
-      "type": "range",
-      "id": "back_text_left",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "%",
-      "label": "Back Text Horizontal",
-      "default": 50
-    },
+    { "type": "range", "id": "slot_1_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "1 Right Chest Top", "default": 38 },
+    { "type": "range", "id": "slot_1_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "1 Right Chest Left", "default": 38 },
+    { "type": "range", "id": "slot_1_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "1 Right Chest Width", "default": 12 },
+    { "type": "range", "id": "slot_2_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "2 Left Chest Top", "default": 38 },
+    { "type": "range", "id": "slot_2_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "2 Left Chest Left", "default": 62 },
+    { "type": "range", "id": "slot_2_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "2 Left Chest Width", "default": 12 },
+    { "type": "range", "id": "slot_3_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "3 Right Hip Top", "default": 52 },
+    { "type": "range", "id": "slot_3_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "3 Right Hip Left", "default": 38 },
+    { "type": "range", "id": "slot_3_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "3 Right Hip Width", "default": 12 },
 
     {
       "type": "header",
-      "content": "Slot 1: Right Chest"
+      "content": "Slot 4-6 Positions"
     },
-    { "type": "range", "id": "slot_1_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 38 },
-    { "type": "range", "id": "slot_1_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 38 },
-    { "type": "range", "id": "slot_1_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
+    { "type": "range", "id": "slot_4_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "4 Left Hip Top", "default": 52 },
+    { "type": "range", "id": "slot_4_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "4 Left Hip Left", "default": 62 },
+    { "type": "range", "id": "slot_4_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "4 Left Hip Width", "default": 12 },
+    { "type": "range", "id": "slot_5_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "5 Hat Top", "default": 8 },
+    { "type": "range", "id": "slot_5_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "5 Hat Left", "default": 50 },
+    { "type": "range", "id": "slot_5_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "5 Hat Width", "default": 15 },
+    { "type": "range", "id": "slot_6_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "6 Arm Top", "default": 35 },
+    { "type": "range", "id": "slot_6_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "6 Arm Left", "default": 20 },
+    { "type": "range", "id": "slot_6_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "6 Arm Width", "default": 10 },
 
     {
       "type": "header",
-      "content": "Slot 2: Left Chest"
-    },
-    { "type": "range", "id": "slot_2_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 38 },
-    { "type": "range", "id": "slot_2_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 62 },
-    { "type": "range", "id": "slot_2_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
-
-    {
-      "type": "header",
-      "content": "Slot 3: Right Hip"
-    },
-    { "type": "range", "id": "slot_3_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 52 },
-    { "type": "range", "id": "slot_3_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 38 },
-    { "type": "range", "id": "slot_3_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
-
-    {
-      "type": "header",
-      "content": "Slot 4: Left Hip"
-    },
-    { "type": "range", "id": "slot_4_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 52 },
-    { "type": "range", "id": "slot_4_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 62 },
-    { "type": "range", "id": "slot_4_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
-
-    {
-      "type": "header",
-      "content": "Slot 5: Hat"
-    },
-    { "type": "range", "id": "slot_5_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 8 },
-    { "type": "range", "id": "slot_5_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 50 },
-    { "type": "range", "id": "slot_5_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 15 },
-
-    {
-      "type": "header",
-      "content": "Slot 6: Arm"
-    },
-    { "type": "range", "id": "slot_6_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 35 },
-    { "type": "range", "id": "slot_6_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 20 },
-    { "type": "range", "id": "slot_6_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 10 },
-
-    {
-      "type": "header",
-      "content": "Patches (Upload up to 22)"
+      "content": "Patches 1-11"
     },
     { "type": "image_picker", "id": "patch_1_img", "label": "Patch 1" },
     { "type": "text", "id": "patch_1_name", "label": "Patch 1 Name" },
@@ -136,6 +75,11 @@
     { "type": "text", "id": "patch_10_name", "label": "Patch 10 Name" },
     { "type": "image_picker", "id": "patch_11_img", "label": "Patch 11" },
     { "type": "text", "id": "patch_11_name", "label": "Patch 11 Name" },
+
+    {
+      "type": "header",
+      "content": "Patches 12-22"
+    },
     { "type": "image_picker", "id": "patch_12_img", "label": "Patch 12" },
     { "type": "text", "id": "patch_12_name", "label": "Patch 12 Name" },
     { "type": "image_picker", "id": "patch_13_img", "label": "Patch 13" },
@@ -176,14 +120,14 @@
       <!-- Front Preview (2nd image) -->
       <div class="preview-wrapper" id="front-preview">
         {% assign front_image = product.images[1] | default: product.featured_image %}
-        <img src="{{ front_image | image_url: width: 800 }}" alt="Front View" class="base-image">
+        <img src="{{ front_image | image_url: width: 800 }}" alt="Front View" class="base-image" width="800" height="1200">
         <div id="preview-overlay"></div>
       </div>
 
       <!-- Back Preview (3rd image) -->
       <div class="preview-wrapper" id="back-preview" style="display: none;">
         {% assign back_image = product.images[2] | default: product.featured_image %}
-        <img src="{{ back_image | image_url: width: 800 }}" alt="Back View" class="base-image">
+        <img src="{{ back_image | image_url: width: 800 }}" alt="Back View" class="base-image" width="800" height="1200">
         <div id="back-overlay"></div>
       </div>
     </div>
