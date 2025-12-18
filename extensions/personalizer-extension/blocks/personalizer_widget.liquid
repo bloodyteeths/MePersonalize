@@ -11,10 +11,10 @@
       "label": "Widget Heading",
       "default": "Personalize Your Racer"
     },
-    
+
     {
       "type": "header",
-      "content": "Text Personalization"
+      "content": "Front Text Position"
     },
     {
       "type": "range",
@@ -36,128 +36,155 @@
       "label": "Horizontal Position",
       "default": 50
     },
-    
-    {
-      "type": "header",
-      "content": "Slot Configuration"
-    },
-    { "type": "text", "id": "slot_1_name", "label": "Slot 1 Name", "default": "Right Chest" },
-    { "type": "text", "id": "slot_1_group", "label": "Slot 1 Group", "default": "chest" },
-    { "type": "range", "id": "slot_1_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 1 Top %", "default": 38 },
-    { "type": "range", "id": "slot_1_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 1 Left %", "default": 38 },
-    { "type": "range", "id": "slot_1_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Slot 1 Width %", "default": 12 },
-
-    { "type": "text", "id": "slot_2_name", "label": "Slot 2 Name", "default": "Left Chest" },
-    { "type": "text", "id": "slot_2_group", "label": "Slot 2 Group", "default": "chest" },
-    { "type": "range", "id": "slot_2_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 2 Top %", "default": 38 },
-    { "type": "range", "id": "slot_2_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 2 Left %", "default": 62 },
-    { "type": "range", "id": "slot_2_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Slot 2 Width %", "default": 12 },
-
-    { "type": "text", "id": "slot_3_name", "label": "Slot 3 Name", "default": "Right Hip" },
-    { "type": "text", "id": "slot_3_group", "label": "Slot 3 Group", "default": "hip" },
-    { "type": "range", "id": "slot_3_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 3 Top %", "default": 52 },
-    { "type": "range", "id": "slot_3_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 3 Left %", "default": 38 },
-    { "type": "range", "id": "slot_3_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Slot 3 Width %", "default": 12 },
-
-    { "type": "text", "id": "slot_4_name", "label": "Slot 4 Name", "default": "Left Hip" },
-    { "type": "text", "id": "slot_4_group", "label": "Slot 4 Group", "default": "hip" },
-    { "type": "range", "id": "slot_4_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 4 Top %", "default": 52 },
-    { "type": "range", "id": "slot_4_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 4 Left %", "default": 62 },
-    { "type": "range", "id": "slot_4_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Slot 4 Width %", "default": 12 },
-
-    { "type": "text", "id": "slot_5_name", "label": "Slot 5 Name", "default": "Hat" },
-    { "type": "text", "id": "slot_5_group", "label": "Slot 5 Group", "default": "hat" },
-    { "type": "range", "id": "slot_5_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 5 Top %", "default": 8 },
-    { "type": "range", "id": "slot_5_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Slot 5 Left %", "default": 50 },
-    { "type": "range", "id": "slot_5_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Slot 5 Width %", "default": 15 },
 
     {
       "type": "header",
-      "content": "Patches: Chest Group"
+      "content": "Back Text Settings"
     },
-    { "type": "image_picker", "id": "patch_1_img", "label": "Patch 1 Image" },
+    {
+      "type": "range",
+      "id": "back_text_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Back Text Vertical",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "back_text_left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Back Text Horizontal",
+      "default": 50
+    },
+
+    {
+      "type": "header",
+      "content": "Slot 1: Right Chest"
+    },
+    { "type": "range", "id": "slot_1_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 38 },
+    { "type": "range", "id": "slot_1_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 38 },
+    { "type": "range", "id": "slot_1_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
+
+    {
+      "type": "header",
+      "content": "Slot 2: Left Chest"
+    },
+    { "type": "range", "id": "slot_2_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 38 },
+    { "type": "range", "id": "slot_2_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 62 },
+    { "type": "range", "id": "slot_2_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
+
+    {
+      "type": "header",
+      "content": "Slot 3: Right Hip"
+    },
+    { "type": "range", "id": "slot_3_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 52 },
+    { "type": "range", "id": "slot_3_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 38 },
+    { "type": "range", "id": "slot_3_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
+
+    {
+      "type": "header",
+      "content": "Slot 4: Left Hip"
+    },
+    { "type": "range", "id": "slot_4_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 52 },
+    { "type": "range", "id": "slot_4_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 62 },
+    { "type": "range", "id": "slot_4_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 12 },
+
+    {
+      "type": "header",
+      "content": "Slot 5: Hat"
+    },
+    { "type": "range", "id": "slot_5_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 8 },
+    { "type": "range", "id": "slot_5_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 50 },
+    { "type": "range", "id": "slot_5_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 15 },
+
+    {
+      "type": "header",
+      "content": "Slot 6: Arm"
+    },
+    { "type": "range", "id": "slot_6_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Top %", "default": 35 },
+    { "type": "range", "id": "slot_6_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Left %", "default": 20 },
+    { "type": "range", "id": "slot_6_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "Width %", "default": 10 },
+
+    {
+      "type": "header",
+      "content": "Patches (Upload up to 22)"
+    },
+    { "type": "image_picker", "id": "patch_1_img", "label": "Patch 1" },
     { "type": "text", "id": "patch_1_name", "label": "Patch 1 Name" },
-    { "type": "text", "id": "patch_1_group", "label": "Patch 1 Group", "default": "chest" },
-
-    { "type": "image_picker", "id": "patch_2_img", "label": "Patch 2 Image" },
+    { "type": "image_picker", "id": "patch_2_img", "label": "Patch 2" },
     { "type": "text", "id": "patch_2_name", "label": "Patch 2 Name" },
-    { "type": "text", "id": "patch_2_group", "label": "Patch 2 Group", "default": "chest" },
-
-    { "type": "image_picker", "id": "patch_3_img", "label": "Patch 3 Image" },
+    { "type": "image_picker", "id": "patch_3_img", "label": "Patch 3" },
     { "type": "text", "id": "patch_3_name", "label": "Patch 3 Name" },
-    { "type": "text", "id": "patch_3_group", "label": "Patch 3 Group", "default": "chest" },
-
-    { "type": "image_picker", "id": "patch_4_img", "label": "Patch 4 Image" },
+    { "type": "image_picker", "id": "patch_4_img", "label": "Patch 4" },
     { "type": "text", "id": "patch_4_name", "label": "Patch 4 Name" },
-    { "type": "text", "id": "patch_4_group", "label": "Patch 4 Group", "default": "chest" },
-
-    { "type": "image_picker", "id": "patch_5_img", "label": "Patch 5 Image" },
+    { "type": "image_picker", "id": "patch_5_img", "label": "Patch 5" },
     { "type": "text", "id": "patch_5_name", "label": "Patch 5 Name" },
-    { "type": "text", "id": "patch_5_group", "label": "Patch 5 Group", "default": "chest" },
-
-    {
-      "type": "header",
-      "content": "Patches: Hip Group"
-    },
-    { "type": "image_picker", "id": "patch_6_img", "label": "Patch 6 Image" },
+    { "type": "image_picker", "id": "patch_6_img", "label": "Patch 6" },
     { "type": "text", "id": "patch_6_name", "label": "Patch 6 Name" },
-    { "type": "text", "id": "patch_6_group", "label": "Patch 6 Group", "default": "hip" },
-
-    { "type": "image_picker", "id": "patch_7_img", "label": "Patch 7 Image" },
+    { "type": "image_picker", "id": "patch_7_img", "label": "Patch 7" },
     { "type": "text", "id": "patch_7_name", "label": "Patch 7 Name" },
-    { "type": "text", "id": "patch_7_group", "label": "Patch 7 Group", "default": "hip" },
-
-    { "type": "image_picker", "id": "patch_8_img", "label": "Patch 8 Image" },
+    { "type": "image_picker", "id": "patch_8_img", "label": "Patch 8" },
     { "type": "text", "id": "patch_8_name", "label": "Patch 8 Name" },
-    { "type": "text", "id": "patch_8_group", "label": "Patch 8 Group", "default": "hip" },
-
-    { "type": "image_picker", "id": "patch_9_img", "label": "Patch 9 Image" },
+    { "type": "image_picker", "id": "patch_9_img", "label": "Patch 9" },
     { "type": "text", "id": "patch_9_name", "label": "Patch 9 Name" },
-    { "type": "text", "id": "patch_9_group", "label": "Patch 9 Group", "default": "hip" },
-
-    {
-      "type": "header",
-      "content": "Patches: Hat & Other"
-    },
-    { "type": "image_picker", "id": "patch_10_img", "label": "Patch 10 Image" },
+    { "type": "image_picker", "id": "patch_10_img", "label": "Patch 10" },
     { "type": "text", "id": "patch_10_name", "label": "Patch 10 Name" },
-    { "type": "text", "id": "patch_10_group", "label": "Patch 10 Group", "default": "hat" },
-
-    { "type": "image_picker", "id": "patch_11_img", "label": "Patch 11 Image" },
+    { "type": "image_picker", "id": "patch_11_img", "label": "Patch 11" },
     { "type": "text", "id": "patch_11_name", "label": "Patch 11 Name" },
-    { "type": "text", "id": "patch_11_group", "label": "Patch 11 Group" },
-
-    { "type": "image_picker", "id": "patch_12_img", "label": "Patch 12 Image" },
+    { "type": "image_picker", "id": "patch_12_img", "label": "Patch 12" },
     { "type": "text", "id": "patch_12_name", "label": "Patch 12 Name" },
-    { "type": "text", "id": "patch_12_group", "label": "Patch 12 Group" },
-
-    { "type": "image_picker", "id": "patch_13_img", "label": "Patch 13 Image" },
+    { "type": "image_picker", "id": "patch_13_img", "label": "Patch 13" },
     { "type": "text", "id": "patch_13_name", "label": "Patch 13 Name" },
-    { "type": "text", "id": "patch_13_group", "label": "Patch 13 Group" },
-
-    { "type": "image_picker", "id": "patch_14_img", "label": "Patch 14 Image" },
+    { "type": "image_picker", "id": "patch_14_img", "label": "Patch 14" },
     { "type": "text", "id": "patch_14_name", "label": "Patch 14 Name" },
-    { "type": "text", "id": "patch_14_group", "label": "Patch 14 Group" },
-
-    { "type": "image_picker", "id": "patch_15_img", "label": "Patch 15 Image" },
+    { "type": "image_picker", "id": "patch_15_img", "label": "Patch 15" },
     { "type": "text", "id": "patch_15_name", "label": "Patch 15 Name" },
-    { "type": "text", "id": "patch_15_group", "label": "Patch 15 Group" }
+    { "type": "image_picker", "id": "patch_16_img", "label": "Patch 16" },
+    { "type": "text", "id": "patch_16_name", "label": "Patch 16 Name" },
+    { "type": "image_picker", "id": "patch_17_img", "label": "Patch 17" },
+    { "type": "text", "id": "patch_17_name", "label": "Patch 17 Name" },
+    { "type": "image_picker", "id": "patch_18_img", "label": "Patch 18" },
+    { "type": "text", "id": "patch_18_name", "label": "Patch 18 Name" },
+    { "type": "image_picker", "id": "patch_19_img", "label": "Patch 19" },
+    { "type": "text", "id": "patch_19_name", "label": "Patch 19 Name" },
+    { "type": "image_picker", "id": "patch_20_img", "label": "Patch 20" },
+    { "type": "text", "id": "patch_20_name", "label": "Patch 20 Name" },
+    { "type": "image_picker", "id": "patch_21_img", "label": "Patch 21" },
+    { "type": "text", "id": "patch_21_name", "label": "Patch 21 Name" },
+    { "type": "image_picker", "id": "patch_22_img", "label": "Patch 22" },
+    { "type": "text", "id": "patch_22_name", "label": "Patch 22 Name" }
   ]
 }
 {% endschema %}
 
 <div class="personalizer-container" data-product-id="{{ product.id }}">
-  <h2>{{ section.settings.heading }}</h2>
-  
+  <h2>{{ block.settings.heading }}</h2>
+
   <div class="personalizer-layout">
-    <!-- Preview Area -->
+    <!-- Preview Area with Tabs -->
     <div class="personalizer-preview">
-      <div class="preview-wrapper">
-        {% assign preview_image = product.images[1] | default: product.featured_image %}
-        <img src="{{ preview_image | image_url: width: 800 }}" width="800" height="800" alt="Base Product" class="base-image" id="base-product-image">
-        <div id="preview-overlay">
-            <!-- Patches will be injected here -->
-        </div>
+      <div class="preview-tabs">
+        <button class="preview-tab active" data-tab="front">Front</button>
+        <button class="preview-tab" data-tab="back">Back</button>
+      </div>
+
+      <!-- Front Preview (2nd image) -->
+      <div class="preview-wrapper" id="front-preview">
+        {% assign front_image = product.images[1] | default: product.featured_image %}
+        <img src="{{ front_image | image_url: width: 800 }}" alt="Front View" class="base-image">
+        <div id="preview-overlay"></div>
+      </div>
+
+      <!-- Back Preview (3rd image) -->
+      <div class="preview-wrapper" id="back-preview" style="display: none;">
+        {% assign back_image = product.images[2] | default: product.featured_image %}
+        <img src="{{ back_image | image_url: width: 800 }}" alt="Back View" class="base-image">
+        <div id="back-overlay"></div>
       </div>
     </div>
 
@@ -165,232 +192,68 @@
     <div class="personalizer-controls">
       <div class="patch-selectors">
         <h3>Select Your Patches</h3>
-        <div id="patch-slots">
-          <!-- Slot selectors will be generated here -->
-        </div>
+        <div id="patch-slots"></div>
       </div>
 
       <div class="text-input-section">
-        <h3>Add Name (Embroidery)</h3>
+        <h3>Front Name (Embroidery)</h3>
         <input type="text" id="embroidery-text" placeholder="Enter Name (e.g. Maverick)" maxlength="12">
+      </div>
+
+      <div class="text-input-section">
+        <h3>Back Name (Embroidery)</h3>
+        <input type="text" id="back-text" placeholder="Enter Back Name" maxlength="12">
+        <div class="color-selector">
+          <label>Text Color:</label>
+          <button class="color-btn active" data-color="white">White</button>
+          <button class="color-btn" data-color="black">Black</button>
+        </div>
       </div>
     </div>
   </div>
-  
+
   <!-- Hidden inputs for form submission -->
   <div id="hidden-inputs-container"></div>
   <input type="hidden" name="properties[Embroidery Text]" id="prop-text">
+  <input type="hidden" name="properties[Back Text]" id="prop-back-text">
+  <input type="hidden" name="properties[Back Text Color]" id="prop-back-color" value="white">
 
   <!-- Data Injection -->
   <script>
-    // Initialize Config
     window.PERSONALIZER_CONFIG = {
       textZone: {
         top: {{ block.settings.text_top | default: 25 }},
         left: {{ block.settings.text_left | default: 50 }}
       },
-      slots: [],
+      backTextZone: {
+        top: {{ block.settings.back_text_top | default: 30 }},
+        left: {{ block.settings.back_text_left | default: 50 }}
+      },
+      slots: [
+        { id: "1", name: "Right Chest", top: {{ block.settings.slot_1_top }}, left: {{ block.settings.slot_1_left }}, width: {{ block.settings.slot_1_width }} },
+        { id: "2", name: "Left Chest", top: {{ block.settings.slot_2_top }}, left: {{ block.settings.slot_2_left }}, width: {{ block.settings.slot_2_width }} },
+        { id: "3", name: "Right Hip", top: {{ block.settings.slot_3_top }}, left: {{ block.settings.slot_3_left }}, width: {{ block.settings.slot_3_width }} },
+        { id: "4", name: "Left Hip", top: {{ block.settings.slot_4_top }}, left: {{ block.settings.slot_4_left }}, width: {{ block.settings.slot_4_width }} },
+        { id: "5", name: "Hat", top: {{ block.settings.slot_5_top }}, left: {{ block.settings.slot_5_left }}, width: {{ block.settings.slot_5_width }} },
+        { id: "6", name: "Arm", top: {{ block.settings.slot_6_top }}, left: {{ block.settings.slot_6_left }}, width: {{ block.settings.slot_6_width }} }
+      ],
       patches: []
     };
 
-    // Populate Slots
-    {% if block.settings.slot_1_name != blank %}
-    window.PERSONALIZER_CONFIG.slots.push({
-      id: "1",
-      name: {{ block.settings.slot_1_name | json }},
-      groupId: {{ block.settings.slot_1_group | default: "chest" | json }},
-      top: {{ block.settings.slot_1_top | default: 30 }},
-      left: {{ block.settings.slot_1_left | default: 30 }},
-      width: {{ block.settings.slot_1_width | default: 12 }}
-    });
-    {% endif %}
-
-    {% if block.settings.slot_2_name != blank %}
-    window.PERSONALIZER_CONFIG.slots.push({
-      id: "2",
-      name: {{ block.settings.slot_2_name | json }},
-      groupId: {{ block.settings.slot_2_group | default: "chest" | json }},
-      top: {{ block.settings.slot_2_top | default: 38 }},
-      left: {{ block.settings.slot_2_left | default: 62 }},
-      width: {{ block.settings.slot_2_width | default: 12 }}
-    });
-    {% endif %}
-
-    {% if block.settings.slot_3_name != blank %}
-    window.PERSONALIZER_CONFIG.slots.push({
-      id: "3",
-      name: {{ block.settings.slot_3_name | json }},
-      groupId: {{ block.settings.slot_3_group | default: "hip" | json }},
-      top: {{ block.settings.slot_3_top | default: 52 }},
-      left: {{ block.settings.slot_3_left | default: 38 }},
-      width: {{ block.settings.slot_3_width | default: 12 }}
-    });
-    {% endif %}
-
-    {% if block.settings.slot_4_name != blank %}
-    window.PERSONALIZER_CONFIG.slots.push({
-      id: "4",
-      name: {{ block.settings.slot_4_name | json }},
-      groupId: {{ block.settings.slot_4_group | default: "hip" | json }},
-      top: {{ block.settings.slot_4_top | default: 52 }},
-      left: {{ block.settings.slot_4_left | default: 62 }},
-      width: {{ block.settings.slot_4_width | default: 12 }}
-    });
-    {% endif %}
-
-    {% if block.settings.slot_5_name != blank %}
-    window.PERSONALIZER_CONFIG.slots.push({
-      id: "5",
-      name: {{ block.settings.slot_5_name | json }},
-      groupId: {{ block.settings.slot_5_group | default: "hat" | json }},
-      top: {{ block.settings.slot_5_top | default: 8 }},
-      left: {{ block.settings.slot_5_left | default: 50 }},
-      width: {{ block.settings.slot_5_width | default: 15 }}
-    });
-    {% endif %}
-
-    // Populate Patches
-    {% if block.settings.patch_1_img != blank %}
+    // Populate patches (unified - no groups)
+    {% for i in (1..22) %}
+      {% assign img_key = 'patch_' | append: i | append: '_img' %}
+      {% assign name_key = 'patch_' | append: i | append: '_name' %}
+      {% if block.settings[img_key] != blank %}
     window.PERSONALIZER_CONFIG.patches.push({
-      id: "p1",
-      name: {{ block.settings.patch_1_name | default: 'Patch 1' | json }},
-      groupId: {{ block.settings.patch_1_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_1_img | image_url: width: 300, format: 'png' }}"
+      id: "p{{ i }}",
+      name: {{ block.settings[name_key] | default: 'Patch' | append: ' ' | append: i | json }},
+      src: "{{ block.settings[img_key] | image_url: width: 300, format: 'png' }}"
     });
-    {% endif %}
+      {% endif %}
+    {% endfor %}
 
-    {% if block.settings.patch_2_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p2",
-      name: {{ block.settings.patch_2_name | default: 'Patch 2' | json }},
-      groupId: {{ block.settings.patch_2_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_2_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_3_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p3",
-      name: {{ block.settings.patch_3_name | default: 'Patch 3' | json }},
-      groupId: {{ block.settings.patch_3_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_3_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_4_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p4",
-      name: {{ block.settings.patch_4_name | default: 'Patch 4' | json }},
-      groupId: {{ block.settings.patch_4_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_4_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_5_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p5",
-      name: {{ block.settings.patch_5_name | default: 'Patch 5' | json }},
-      groupId: {{ block.settings.patch_5_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_5_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_6_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p6",
-      name: {{ block.settings.patch_6_name | default: 'Patch 6' | json }},
-      groupId: {{ block.settings.patch_6_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_6_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_7_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p7",
-      name: {{ block.settings.patch_7_name | default: 'Patch 7' | json }},
-      groupId: {{ block.settings.patch_7_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_7_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_8_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p8",
-      name: {{ block.settings.patch_8_name | default: 'Patch 8' | json }},
-      groupId: {{ block.settings.patch_8_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_8_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_9_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p9",
-      name: {{ block.settings.patch_9_name | default: 'Patch 9' | json }},
-      groupId: {{ block.settings.patch_9_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_9_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_10_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p10",
-      name: {{ block.settings.patch_10_name | default: 'Patch 10' | json }},
-      groupId: {{ block.settings.patch_10_group | default: "hat" | json }},
-      src: "{{ block.settings.patch_10_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_11_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p11",
-      name: {{ block.settings.patch_11_name | default: 'Patch 11' | json }},
-      groupId: {{ block.settings.patch_11_group | default: "other" | json }},
-      src: "{{ block.settings.patch_11_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_12_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p12",
-      name: {{ block.settings.patch_12_name | default: 'Patch 12' | json }},
-      groupId: {{ block.settings.patch_12_group | default: "other" | json }},
-      src: "{{ block.settings.patch_12_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_13_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p13",
-      name: {{ block.settings.patch_13_name | default: 'Patch 13' | json }},
-      groupId: {{ block.settings.patch_13_group | default: "other" | json }},
-      src: "{{ block.settings.patch_13_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_14_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p14",
-      name: {{ block.settings.patch_14_name | default: 'Patch 14' | json }},
-      groupId: {{ block.settings.patch_14_group | default: "other" | json }},
-      src: "{{ block.settings.patch_14_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    {% if block.settings.patch_15_img != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p15",
-      name: {{ block.settings.patch_15_name | default: 'Patch 15' | json }},
-      groupId: {{ block.settings.patch_15_group | default: "other" | json }},
-      src: "{{ block.settings.patch_15_img | image_url: width: 300, format: 'png' }}"
-    });
-    {% endif %}
-
-    // COMPREHENSIVE DEBUG LOGGING
-    console.log('PERSONALIZER: VERSION 22 LOADED (Dropdown UI, 15 patches max, 2nd image)');
-    console.log('=== PERSONALIZER DEBUG START ===');
-    console.log('Full Config:', window.PERSONALIZER_CONFIG);
-    console.log('Total Slots:', window.PERSONALIZER_CONFIG.slots.length);
-    console.log('Total Patches:', window.PERSONALIZER_CONFIG.patches.length);
-    console.log('=== PERSONALIZER DEBUG END ===');
+    console.log('PERSONALIZER: VERSION 26 (6 slots, unified patches, back text)');
+    console.log('Config:', window.PERSONALIZER_CONFIG);
   </script>
 </div>

@@ -2,53 +2,27 @@ document.addEventListener('DOMContentLoaded', function () {
   const container = document.querySelector('.personalizer-container');
   if (!container) return;
 
-  // Load Config from Liquid
-  // Load Config from Liquid
-  const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: { top: 25, left: 50 } };
-  console.log('PERSONALIZER: Raw Config Loaded', config);
-  console.log('PERSONALIZER: JS VERSION 23 LOADED (Custom dropdown with images)');
+  const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: {}, backTextZone: {} };
+  console.log('PERSONALIZER: JS VERSION 26 (6 slots, unified patches, back text)');
+  console.log('Config:', config);
 
-  // Filter slots to ensure they have an ID and Name
-  const SLOTS = (config.slots || []).filter(s => s.id && s.name);
-
-  // Filter patches to ensure they have an ID and Src
-  const ALL_PATCHES = (config.patches || []).filter(p => p.id && p.src && p.src.trim() !== '');
-
+  const SLOTS = config.slots || [];
+  const ALL_PATCHES = (config.patches || []).filter(p => p.id && p.src);
   const TEXT_ZONE = config.textZone || { top: 25, left: 50 };
-
-  // FALLBACK: If no slots are configured (e.g. fresh install or Liquid error), inject defaults
-  if (SLOTS.length === 0) {
-    console.warn('PERSONALIZER: No slots found in config. Using JS Fallback defaults.');
-    SLOTS.push(
-      { id: "1", name: "Chest", groupId: "chest", top: 30, left: 30, width: 12 },
-      { id: "2", name: "Hip", groupId: "hip", top: 50, left: 30, width: 12 }
-    );
-  }
-
-  // FALLBACK: If no patches are configured, inject defaults
-  if (ALL_PATCHES.length === 0) {
-    console.warn('PERSONALIZER: No patches found in config. Using JS Fallback defaults.');
-    // Use a simple gray square as placeholder (base64 data URI to avoid 404)
-    const placeholderImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2RkZCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5QYXRjaCBQbGFjZWhvbGRlcjwvdGV4dD48L3N2Zz4=';
-    ALL_PATCHES.push(
-      { id: "p1", name: "Star Patch", groupId: "chest", src: placeholderImage },
-      { id: "p2", name: "Lightning Patch", groupId: "hip", src: placeholderImage }
-    );
-  }
-
+  const BACK_TEXT_ZONE = config.backTextZone || { top: 30, left: 50 };
 
   // State
   const state = {
-    slots: {}, // Will be { slotId: patchId }
-    text: ''
+    slots: {},
+    frontText: '',
+    backText: '',
+    backTextColor: 'white'
   };
 
-  // Initialize State & Inputs
+  // Initialize State & Hidden Inputs
   const inputsContainer = document.getElementById('hidden-inputs-container');
   SLOTS.forEach(slot => {
     state.slots[slot.id] = null;
-
-    // Create hidden input for this slot
     const input = document.createElement('input');
     input.type = 'hidden';
     input.name = `properties[${slot.name}]`;
@@ -58,23 +32,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Init
   initControls();
+  initTabs();
+  initColorSelector();
   updatePreview();
 
   function initControls() {
     const slotsContainer = document.getElementById('patch-slots');
-    slotsContainer.innerHTML = ''; // Clear existing
-
-    if (SLOTS.length === 0) {
-      console.warn('PERSONALIZER: No slots found in config');
-      slotsContainer.innerHTML = '<p>No slots configured. Please configure the "Personalizer Widget" settings in the Theme Editor.</p>';
-      return;
-    }
+    slotsContainer.innerHTML = '';
 
     SLOTS.forEach(slot => {
-      // Filter patches for this slot based on Group ID
-      const availablePatches = ALL_PATCHES.filter(p => p.groupId === slot.groupId);
-      console.log(`PERSONALIZER: Slot ${slot.name} (Group: ${slot.groupId}) has ${availablePatches.length} patches`);
-
       const slotDiv = document.createElement('div');
       slotDiv.className = 'patch-slot-control';
       slotDiv.innerHTML = `
@@ -88,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="custom-dropdown-option" data-patch-id="" onclick="selectPatchFromDropdown('${slot.id}', '')">
               <span class="option-text">-- None --</span>
             </div>
-            ${availablePatches.map(patch => `
+            ${ALL_PATCHES.map(patch => `
               <div class="custom-dropdown-option" data-patch-id="${patch.id}" onclick="selectPatchFromDropdown('${slot.id}', '${patch.id}')">
                 <img src="${patch.src}" alt="${patch.name}">
                 <span class="option-text">${patch.name}</span>
@@ -100,48 +66,72 @@ document.addEventListener('DOMContentLoaded', function () {
       slotsContainer.appendChild(slotDiv);
     });
 
+    // Front text input
     const textInput = document.getElementById('embroidery-text');
     if (textInput) {
       textInput.addEventListener('input', (e) => {
-        state.text = e.target.value;
-        console.log('PERSONALIZER: Text updated', state.text);
+        state.frontText = e.target.value;
+        updatePreview();
+        updateFormInputs();
+      });
+    }
+
+    // Back text input
+    const backTextInput = document.getElementById('back-text');
+    if (backTextInput) {
+      backTextInput.addEventListener('input', (e) => {
+        state.backText = e.target.value;
         updatePreview();
         updateFormInputs();
       });
     }
   }
 
+  function initTabs() {
+    const tabs = document.querySelectorAll('.preview-tab');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const tabName = tab.dataset.tab;
+        document.getElementById('front-preview').style.display = tabName === 'front' ? 'block' : 'none';
+        document.getElementById('back-preview').style.display = tabName === 'back' ? 'block' : 'none';
+      });
+    });
+  }
+
+  function initColorSelector() {
+    const colorBtns = document.querySelectorAll('.color-btn');
+    colorBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        colorBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.backTextColor = btn.dataset.color;
+        updatePreview();
+        updateFormInputs();
+      });
+    });
+  }
+
   window.toggleDropdown = function (slotId) {
     const options = document.getElementById(`dropdown-options-${slotId}`);
     const allOptions = document.querySelectorAll('.custom-dropdown-options');
-
-    // Close all other dropdowns
     allOptions.forEach(opt => {
-      if (opt.id !== `dropdown-options-${slotId}`) {
-        opt.classList.remove('open');
-      }
+      if (opt.id !== `dropdown-options-${slotId}`) opt.classList.remove('open');
     });
-
-    // Toggle this dropdown
     options.classList.toggle('open');
   };
 
-  // Close dropdowns when clicking outside
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.custom-dropdown')) {
-      document.querySelectorAll('.custom-dropdown-options').forEach(opt => {
-        opt.classList.remove('open');
-      });
+      document.querySelectorAll('.custom-dropdown-options').forEach(opt => opt.classList.remove('open'));
     }
   });
 
   window.selectPatchFromDropdown = function (slotId, patchId) {
-    console.log(`PERSONALIZER: Selecting patch ${patchId} for slot ${slotId}`);
-
-    // Set the selected patch (empty string means deselect)
     state.slots[slotId] = patchId || null;
 
-    // Update the custom dropdown display
     const dropdown = document.querySelector(`.custom-dropdown[data-slot-id="${slotId}"]`);
     if (dropdown) {
       const selectedDisplay = dropdown.querySelector('.custom-dropdown-selected');
@@ -162,8 +152,6 @@ document.addEventListener('DOMContentLoaded', function () {
           <span class="dropdown-arrow">▼</span>
         `;
       }
-
-      // Close the dropdown
       options.classList.remove('open');
     }
 
@@ -171,46 +159,57 @@ document.addEventListener('DOMContentLoaded', function () {
     updateFormInputs();
   };
 
-  // Legacy function for backwards compatibility
-  window.selectPatch = function (slotId, patchId) {
-    window.selectPatchFromDropdown(slotId, patchId);
-  };
-
   function updatePreview() {
-    const overlay = document.getElementById('preview-overlay');
-    if (!overlay) return;
-    overlay.innerHTML = '';
+    // Front preview
+    const frontOverlay = document.getElementById('preview-overlay');
+    if (frontOverlay) {
+      frontOverlay.innerHTML = '';
 
-    // Render Patches
-    SLOTS.forEach(slot => {
-      const patchId = state.slots[slot.id];
-      if (patchId) {
-        const patch = ALL_PATCHES.find(p => p.id === patchId);
-        if (patch) {
-          console.log(`PERSONALIZER: Rendering patch ${patch.name} at ${slot.top}%, ${slot.left}%`);
-          const img = document.createElement('img');
-          img.src = patch.src;
-          img.className = 'patch-element';
-          img.style.top = `${slot.top}%`;
-          img.style.left = `${slot.left}%`;
-          img.style.width = `${slot.width}%`;
-          img.style.position = 'absolute'; // Ensure absolute positioning
-          img.style.zIndex = '10'; // Force on top
-          overlay.appendChild(img);
+      // Render patches
+      SLOTS.forEach(slot => {
+        const patchId = state.slots[slot.id];
+        if (patchId) {
+          const patch = ALL_PATCHES.find(p => p.id === patchId);
+          if (patch) {
+            const img = document.createElement('img');
+            img.src = patch.src;
+            img.className = 'patch-element';
+            img.style.top = `${slot.top}%`;
+            img.style.left = `${slot.left}%`;
+            img.style.width = `${slot.width}%`;
+            img.style.position = 'absolute';
+            img.style.zIndex = '10';
+            frontOverlay.appendChild(img);
+          }
         }
-      }
-    });
+      });
 
-    // Render Text
-    if (state.text) {
-      const textDiv = document.createElement('div');
-      textDiv.className = 'text-overlay';
-      textDiv.textContent = state.text;
-      textDiv.style.top = `${TEXT_ZONE.top}%`;
-      textDiv.style.left = `${TEXT_ZONE.left}%`;
-      textDiv.style.position = 'absolute';
-      textDiv.style.zIndex = '20'; // Force on top of patches
-      overlay.appendChild(textDiv);
+      // Render front text
+      if (state.frontText) {
+        const textDiv = document.createElement('div');
+        textDiv.className = 'text-overlay';
+        textDiv.textContent = state.frontText;
+        textDiv.style.top = `${TEXT_ZONE.top}%`;
+        textDiv.style.left = `${TEXT_ZONE.left}%`;
+        frontOverlay.appendChild(textDiv);
+      }
+    }
+
+    // Back preview
+    const backOverlay = document.getElementById('back-overlay');
+    if (backOverlay) {
+      backOverlay.innerHTML = '';
+
+      if (state.backText) {
+        const textDiv = document.createElement('div');
+        textDiv.className = 'text-overlay back-text';
+        textDiv.textContent = state.backText;
+        textDiv.style.top = `${BACK_TEXT_ZONE.top}%`;
+        textDiv.style.left = `${BACK_TEXT_ZONE.left}%`;
+        textDiv.style.color = state.backTextColor;
+        textDiv.style.textShadow = state.backTextColor === 'white' ? '1px 1px 2px black' : '1px 1px 2px white';
+        backOverlay.appendChild(textDiv);
+      }
     }
   }
 
@@ -229,6 +228,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const textInput = document.getElementById('prop-text');
-    if (textInput) textInput.value = state.text;
+    if (textInput) textInput.value = state.frontText;
+
+    const backTextInput = document.getElementById('prop-back-text');
+    if (backTextInput) backTextInput.value = state.backText;
+
+    const backColorInput = document.getElementById('prop-back-color');
+    if (backColorInput) backColorInput.value = state.backTextColor;
   }
 });
