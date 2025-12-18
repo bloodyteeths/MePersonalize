@@ -172,11 +172,21 @@
 .custom-dropdown-option img,
 .custom-dropdown-selected img,
 .selected-patch-img,
-img[src*="cdn.shopify"] {
+img[src*="cdn.shopify"],
+#preview-overlay img {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;
   border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Force transparency on the overlay patches - use multiply to hide white backgrounds */
+#preview-overlay .patch-element {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  mix-blend-mode: multiply;
 }
 
 #embroidery-text {
