@@ -182,11 +182,10 @@ img[src*="cdn.shopify"],
   outline: none !important;
 }
 
-/* Force transparency on the overlay patches - use multiply to hide white backgrounds */
+/* Normal blend mode for patches */
 #preview-overlay .patch-element {
   background: none !important;
-  -webkit-background-clip: unset !important;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 
 #embroidery-text {

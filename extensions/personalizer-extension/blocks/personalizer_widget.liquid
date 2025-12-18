@@ -255,7 +255,7 @@
       id: "p1",
       name: {{ block.settings.patch_1_name | default: 'Patch 1' | json }},
       groupId: {{ block.settings.patch_1_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_1_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_1_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -264,7 +264,7 @@
       id: "p2",
       name: {{ block.settings.patch_2_name | default: 'Patch 2' | json }},
       groupId: {{ block.settings.patch_2_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_2_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_2_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -273,7 +273,7 @@
       id: "p3",
       name: {{ block.settings.patch_3_name | default: 'Patch 3' | json }},
       groupId: {{ block.settings.patch_3_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_3_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_3_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -282,7 +282,7 @@
       id: "p4",
       name: {{ block.settings.patch_4_name | default: 'Patch 4' | json }},
       groupId: {{ block.settings.patch_4_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_4_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_4_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -291,7 +291,7 @@
       id: "p5",
       name: {{ block.settings.patch_5_name | default: 'Patch 5' | json }},
       groupId: {{ block.settings.patch_5_group | default: "chest" | json }},
-      src: "{{ block.settings.patch_5_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_5_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -300,7 +300,7 @@
       id: "p6",
       name: {{ block.settings.patch_6_name | default: 'Patch 6' | json }},
       groupId: {{ block.settings.patch_6_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_6_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_6_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -309,7 +309,7 @@
       id: "p7",
       name: {{ block.settings.patch_7_name | default: 'Patch 7' | json }},
       groupId: {{ block.settings.patch_7_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_7_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_7_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -318,7 +318,7 @@
       id: "p8",
       name: {{ block.settings.patch_8_name | default: 'Patch 8' | json }},
       groupId: {{ block.settings.patch_8_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_8_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_8_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -327,7 +327,7 @@
       id: "p9",
       name: {{ block.settings.patch_9_name | default: 'Patch 9' | json }},
       groupId: {{ block.settings.patch_9_group | default: "hip" | json }},
-      src: "{{ block.settings.patch_9_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_9_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -336,7 +336,7 @@
       id: "p10",
       name: {{ block.settings.patch_10_name | default: 'Patch 10' | json }},
       groupId: {{ block.settings.patch_10_group | default: "hat" | json }},
-      src: "{{ block.settings.patch_10_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_10_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -345,7 +345,7 @@
       id: "p11",
       name: {{ block.settings.patch_11_name | default: 'Patch 11' | json }},
       groupId: {{ block.settings.patch_11_group | default: "other" | json }},
-      src: "{{ block.settings.patch_11_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_11_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -354,7 +354,7 @@
       id: "p12",
       name: {{ block.settings.patch_12_name | default: 'Patch 12' | json }},
       groupId: {{ block.settings.patch_12_group | default: "other" | json }},
-      src: "{{ block.settings.patch_12_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_12_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -363,7 +363,7 @@
       id: "p13",
       name: {{ block.settings.patch_13_name | default: 'Patch 13' | json }},
       groupId: {{ block.settings.patch_13_group | default: "other" | json }},
-      src: "{{ block.settings.patch_13_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_13_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -372,7 +372,7 @@
       id: "p14",
       name: {{ block.settings.patch_14_name | default: 'Patch 14' | json }},
       groupId: {{ block.settings.patch_14_group | default: "other" | json }},
-      src: "{{ block.settings.patch_14_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_14_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
@@ -381,7 +381,7 @@
       id: "p15",
       name: {{ block.settings.patch_15_name | default: 'Patch 15' | json }},
       groupId: {{ block.settings.patch_15_group | default: "other" | json }},
-      src: "{{ block.settings.patch_15_img | image_url: width: 300 }}"
+      src: "{{ block.settings.patch_15_img | image_url: width: 300, format: 'png' }}"
     });
     {% endif %}
 
