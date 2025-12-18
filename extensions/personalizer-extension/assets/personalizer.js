@@ -3,13 +3,15 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!container) return;
 
   const config = window.PERSONALIZER_CONFIG || { slots: [], patches: [], textZone: {}, backTextZone: {} };
-  console.log('PERSONALIZER: JS VERSION 26 (6 slots, unified patches, back text)');
+  console.log('PERSONALIZER: JS VERSION 27 (name fees)');
   console.log('Config:', config);
 
   const SLOTS = config.slots || [];
   const ALL_PATCHES = (config.patches || []).filter(p => p.id && p.src);
   const TEXT_ZONE = config.textZone || { top: 25, left: 50 };
   const BACK_TEXT_ZONE = config.backTextZone || { top: 30, left: 50 };
+  const FRONT_NAME_FEE_VARIANT = config.frontNameFeeVariant || '';
+  const BACK_NAME_FEE_VARIANT = config.backNameFeeVariant || '';
 
   // State
   const state = {
@@ -236,4 +238,127 @@ document.addEventListener('DOMContentLoaded', function () {
     const backColorInput = document.getElementById('prop-back-color');
     if (backColorInput) backColorInput.value = state.backTextColor;
   }
+
+  // Intercept form submission to add fee products
+  function initFormInterception() {
+    // Find the product form (could be in different locations depending on theme)
+    const productForm = container.closest('form[action*="/cart/add"]') ||
+                        document.querySelector('form[action*="/cart/add"]');
+
+    if (!productForm) {
+      console.log('PERSONALIZER: No product form found, fee products will not be added automatically');
+      return;
+    }
+
+    console.log('PERSONALIZER: Form interception initialized');
+
+    productForm.addEventListener('submit', async function(e) {
+      // Check if we need to add fee products
+      const needsFrontFee = state.frontText.trim() && FRONT_NAME_FEE_VARIANT;
+      const needsBackFee = state.backText.trim() && BACK_NAME_FEE_VARIANT;
+
+      if (!needsFrontFee && !needsBackFee) {
+        // No fees needed, let form submit normally
+        return;
+      }
+
+      // Prevent default form submission
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Get the main product variant ID from the form
+      const variantInput = productForm.querySelector('input[name="id"]') ||
+                           productForm.querySelector('select[name="id"]');
+      const mainVariantId = variantInput ? variantInput.value : null;
+
+      if (!mainVariantId) {
+        console.error('PERSONALIZER: Could not find main product variant ID');
+        productForm.submit();
+        return;
+      }
+
+      // Build the items array for cart
+      const items = [];
+
+      // Add main product with properties
+      const mainProductItem = {
+        id: mainVariantId,
+        quantity: 1,
+        properties: {}
+      };
+
+      // Add slot properties
+      SLOTS.forEach(slot => {
+        const patchId = state.slots[slot.id];
+        if (patchId) {
+          const patch = ALL_PATCHES.find(p => p.id === patchId);
+          if (patch) {
+            mainProductItem.properties[slot.name] = patch.name;
+          }
+        }
+      });
+
+      // Add text properties
+      if (state.frontText.trim()) {
+        mainProductItem.properties['Embroidery Text'] = state.frontText;
+      }
+      if (state.backText.trim()) {
+        mainProductItem.properties['Back Text'] = state.backText;
+        mainProductItem.properties['Back Text Color'] = state.backTextColor;
+      }
+
+      items.push(mainProductItem);
+
+      // Add front name fee if needed
+      if (needsFrontFee) {
+        items.push({
+          id: FRONT_NAME_FEE_VARIANT,
+          quantity: 1,
+          properties: {
+            '_fee_for': 'Front Name Embroidery'
+          }
+        });
+        console.log('PERSONALIZER: Adding front name fee variant:', FRONT_NAME_FEE_VARIANT);
+      }
+
+      // Add back name fee if needed
+      if (needsBackFee) {
+        items.push({
+          id: BACK_NAME_FEE_VARIANT,
+          quantity: 1,
+          properties: {
+            '_fee_for': 'Back Name Embroidery'
+          }
+        });
+        console.log('PERSONALIZER: Adding back name fee variant:', BACK_NAME_FEE_VARIANT);
+      }
+
+      try {
+        // Add all items to cart using Shopify Cart API
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ items: items })
+        });
+
+        if (response.ok) {
+          console.log('PERSONALIZER: Items added to cart successfully');
+          // Redirect to cart or trigger cart update
+          window.location.href = '/cart';
+        } else {
+          const errorData = await response.json();
+          console.error('PERSONALIZER: Cart add failed:', errorData);
+          alert('Error adding to cart: ' + (errorData.description || 'Unknown error'));
+        }
+      } catch (error) {
+        console.error('PERSONALIZER: Cart add error:', error);
+        alert('Error adding to cart. Please try again.');
+      }
+    });
+  }
+
+  // Initialize form interception
+  initFormInterception();
 });

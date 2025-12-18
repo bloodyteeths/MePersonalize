@@ -14,12 +14,14 @@
 
     {
       "type": "header",
-      "content": "Text Positions"
+      "content": "Text & Name Fees"
     },
     { "type": "range", "id": "text_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Front Text Top", "default": 25 },
     { "type": "range", "id": "text_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Front Text Left", "default": 50 },
+    { "type": "text", "id": "front_name_fee_variant", "label": "Front Name Fee Variant ID", "info": "Enter the variant ID of the fee product for front name" },
     { "type": "range", "id": "back_text_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Back Text Top", "default": 30 },
     { "type": "range", "id": "back_text_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Back Text Left", "default": 50 },
+    { "type": "text", "id": "back_name_fee_variant", "label": "Back Name Fee Variant ID", "info": "Enter the variant ID of the fee product for back name" },
 
     {
       "type": "header",
@@ -173,6 +175,8 @@
         top: {{ block.settings.back_text_top | default: 30 }},
         left: {{ block.settings.back_text_left | default: 50 }}
       },
+      frontNameFeeVariant: {{ block.settings.front_name_fee_variant | default: '' | json }},
+      backNameFeeVariant: {{ block.settings.back_name_fee_variant | default: '' | json }},
       slots: [
         { id: "1", name: "Right Chest", top: {{ block.settings.slot_1_top }}, left: {{ block.settings.slot_1_left }}, width: {{ block.settings.slot_1_width }} },
         { id: "2", name: "Left Chest", top: {{ block.settings.slot_2_top }}, left: {{ block.settings.slot_2_left }}, width: {{ block.settings.slot_2_width }} },
@@ -197,7 +201,7 @@
       {% endif %}
     {% endfor %}
 
-    console.log('PERSONALIZER: VERSION 26 (6 slots, unified patches, back text)');
+    console.log('PERSONALIZER: VERSION 27 (name fees)');
     console.log('Config:', window.PERSONALIZER_CONFIG);
   </script>
 </div>
