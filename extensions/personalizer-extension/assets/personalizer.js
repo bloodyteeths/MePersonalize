@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!inputEl) return;
 
+  // Move the widget into the product form, right before the submit/add-to-cart button
+  const productForm = document.querySelector('form[action*="/cart/add"]');
+  if (productForm) {
+    const submitBtn = productForm.querySelector('[type="submit"], button[name="add"]');
+    if (submitBtn) {
+      submitBtn.parentNode.insertBefore(container, submitBtn);
+    } else {
+      productForm.appendChild(container);
+    }
+  }
+
   // Character count + sync hidden input
   inputEl.addEventListener('input', function () {
     if (countEl) countEl.textContent = inputEl.value.length;
@@ -18,15 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Form validation
-  const productForm = container.closest('form[action*="/cart/add"]') ||
-                      document.querySelector('form[action*="/cart/add"]');
-
   if (productForm) {
     productForm.addEventListener('submit', function (e) {
-      // Always sync value
       if (hiddenInput) hiddenInput.value = inputEl.value;
 
-      // Required validation
       if (isRequired && !inputEl.value.trim()) {
         e.preventDefault();
         e.stopPropagation();
