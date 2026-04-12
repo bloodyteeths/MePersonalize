@@ -31,13 +31,3 @@ model Session {
   collaborator  Boolean?  @default(false)
   emailVerified Boolean?  @default(false)
 }
-
-model PersonalizerConfig {
-  id        String   @id @default(cuid())
-  shop      String   @unique
-  label     String   @default("Add your personalization")
-  charLimit Int      @default(100)
-  required  Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}

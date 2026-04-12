@@ -6,12 +6,6 @@
   "javascript": "personalizer.js",
   "settings": [
     {
-      "type": "text",
-      "id": "label",
-      "label": "Personalization label",
-      "default": "Add your personalization"
-    },
-    {
       "type": "range",
       "id": "char_limit",
       "min": 10,
@@ -30,34 +24,30 @@
 }
 {% endschema %}
 
-<div class="personalizer-container" data-product-id="{{ product.id }}">
-  <div class="personalizer-field" id="personalizer-field">
-    <label class="personalizer-label" for="personalizer-input" id="personalizer-label">
-      {{ block.settings.label }}
-    </label>
-    <textarea
-      id="personalizer-input"
-      class="personalizer-input"
-      placeholder="Enter your personalization here..."
-      maxlength="{{ block.settings.char_limit }}"
-    ></textarea>
-    <div class="personalizer-char-count">
-      <span id="personalizer-count">0</span> / <span id="personalizer-max">{{ block.settings.char_limit }}</span>
+{% assign personalization_label = product.metafields.custom.personalization_label.value %}
+
+{% if personalization_label != blank %}
+  <div class="personalizer-container" data-product-id="{{ product.id }}">
+    <div class="personalizer-field">
+      <label class="personalizer-label" for="personalizer-input">
+        {{ personalization_label }}
+      </label>
+      <textarea
+        id="personalizer-input"
+        class="personalizer-input"
+        placeholder="Enter your personalization here..."
+        maxlength="{{ block.settings.char_limit }}"
+        {% if block.settings.required %}data-required="true"{% endif %}
+      ></textarea>
+      <div class="personalizer-char-count">
+        <span id="personalizer-count">0</span> / {{ block.settings.char_limit }}
+      </div>
+      <div class="personalizer-error" id="personalizer-error" style="display: none;">
+        This field is required.
+      </div>
     </div>
-    <div class="personalizer-error" id="personalizer-error" style="display: none;">
-      This field is required.
-    </div>
+
+    <!-- Hidden input for form submission -->
+    <input type="hidden" name="properties[Personalization]" id="prop-personalization">
   </div>
-
-  <!-- Hidden input for form submission -->
-  <input type="hidden" name="properties[Personalization]" id="prop-personalization">
-
-  <script>
-    window.PERSONALIZER_PROXY_URL = "/apps/personalizer";
-    window.PERSONALIZER_CONFIG = {
-      label: {{ block.settings.label | json }},
-      charLimit: {{ block.settings.char_limit }},
-      required: {{ block.settings.required }}
-    };
-  </script>
-</div>
+{% endif %}
