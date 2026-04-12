@@ -29,3 +29,8 @@ redirect_urls = [
   "https://me-personalize.vercel.app/auth/shopify/callback",
   "https://me-personalize.vercel.app/api/auth/callback"
 ]
+
+[app_proxy]
+url = "https://me-personalize.vercel.app/api/personalizer"
+subpath = "personalizer"
+prefix = "apps"

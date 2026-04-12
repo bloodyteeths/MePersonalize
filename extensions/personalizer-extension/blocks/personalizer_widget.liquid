@@ -7,201 +7,57 @@
   "settings": [
     {
       "type": "text",
-      "id": "heading",
-      "label": "Widget Heading",
-      "default": "Personalize Your Racer"
+      "id": "label",
+      "label": "Personalization label",
+      "default": "Add your personalization"
     },
-
     {
-      "type": "header",
-      "content": "Text & Name Fees"
+      "type": "range",
+      "id": "char_limit",
+      "min": 1,
+      "max": 500,
+      "step": 1,
+      "label": "Character limit",
+      "default": 100
     },
-    { "type": "range", "id": "text_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Front Text Top", "default": 25 },
-    { "type": "range", "id": "text_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Front Text Left", "default": 50 },
-    { "type": "text", "id": "front_name_fee_variant", "label": "Front Name Fee Variant ID", "info": "Enter the variant ID of the fee product for front name" },
-    { "type": "range", "id": "back_text_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Back Text Top", "default": 30 },
-    { "type": "range", "id": "back_text_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "Back Text Left", "default": 50 },
-    { "type": "text", "id": "back_name_fee_variant", "label": "Back Name Fee Variant ID", "info": "Enter the variant ID of the fee product for back name" },
-
     {
-      "type": "header",
-      "content": "Slot 1-3 Positions"
-    },
-    { "type": "range", "id": "slot_1_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "1 Right Chest Top", "default": 38 },
-    { "type": "range", "id": "slot_1_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "1 Right Chest Left", "default": 38 },
-    { "type": "range", "id": "slot_1_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "1 Right Chest Width", "default": 12 },
-    { "type": "range", "id": "slot_2_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "2 Left Chest Top", "default": 38 },
-    { "type": "range", "id": "slot_2_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "2 Left Chest Left", "default": 62 },
-    { "type": "range", "id": "slot_2_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "2 Left Chest Width", "default": 12 },
-    { "type": "range", "id": "slot_3_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "3 Right Hip Top", "default": 52 },
-    { "type": "range", "id": "slot_3_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "3 Right Hip Left", "default": 38 },
-    { "type": "range", "id": "slot_3_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "3 Right Hip Width", "default": 12 },
-
-    {
-      "type": "header",
-      "content": "Slot 4-6 Positions"
-    },
-    { "type": "range", "id": "slot_4_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "4 Left Hip Top", "default": 52 },
-    { "type": "range", "id": "slot_4_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "4 Left Hip Left", "default": 62 },
-    { "type": "range", "id": "slot_4_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "4 Left Hip Width", "default": 12 },
-    { "type": "range", "id": "slot_5_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "5 Hat Top", "default": 8 },
-    { "type": "range", "id": "slot_5_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "5 Hat Left", "default": 50 },
-    { "type": "range", "id": "slot_5_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "5 Hat Width", "default": 15 },
-    { "type": "range", "id": "slot_6_top", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "6 Arm Top", "default": 35 },
-    { "type": "range", "id": "slot_6_left", "min": 0, "max": 100, "step": 1, "unit": "%", "label": "6 Arm Left", "default": 20 },
-    { "type": "range", "id": "slot_6_width", "min": 5, "max": 50, "step": 1, "unit": "%", "label": "6 Arm Width", "default": 10 },
-
-    {
-      "type": "header",
-      "content": "Patches 1-11"
-    },
-    { "type": "image_picker", "id": "patch_1_img", "label": "Patch 1" },
-    { "type": "text", "id": "patch_1_name", "label": "Patch 1 Name" },
-    { "type": "image_picker", "id": "patch_2_img", "label": "Patch 2" },
-    { "type": "text", "id": "patch_2_name", "label": "Patch 2 Name" },
-    { "type": "image_picker", "id": "patch_3_img", "label": "Patch 3" },
-    { "type": "text", "id": "patch_3_name", "label": "Patch 3 Name" },
-    { "type": "image_picker", "id": "patch_4_img", "label": "Patch 4" },
-    { "type": "text", "id": "patch_4_name", "label": "Patch 4 Name" },
-    { "type": "image_picker", "id": "patch_5_img", "label": "Patch 5" },
-    { "type": "text", "id": "patch_5_name", "label": "Patch 5 Name" },
-    { "type": "image_picker", "id": "patch_6_img", "label": "Patch 6" },
-    { "type": "text", "id": "patch_6_name", "label": "Patch 6 Name" },
-    { "type": "image_picker", "id": "patch_7_img", "label": "Patch 7" },
-    { "type": "text", "id": "patch_7_name", "label": "Patch 7 Name" },
-    { "type": "image_picker", "id": "patch_8_img", "label": "Patch 8" },
-    { "type": "text", "id": "patch_8_name", "label": "Patch 8 Name" },
-    { "type": "image_picker", "id": "patch_9_img", "label": "Patch 9" },
-    { "type": "text", "id": "patch_9_name", "label": "Patch 9 Name" },
-    { "type": "image_picker", "id": "patch_10_img", "label": "Patch 10" },
-    { "type": "text", "id": "patch_10_name", "label": "Patch 10 Name" },
-    { "type": "image_picker", "id": "patch_11_img", "label": "Patch 11" },
-    { "type": "text", "id": "patch_11_name", "label": "Patch 11 Name" },
-
-    {
-      "type": "header",
-      "content": "Patches 12-22"
-    },
-    { "type": "image_picker", "id": "patch_12_img", "label": "Patch 12" },
-    { "type": "text", "id": "patch_12_name", "label": "Patch 12 Name" },
-    { "type": "image_picker", "id": "patch_13_img", "label": "Patch 13" },
-    { "type": "text", "id": "patch_13_name", "label": "Patch 13 Name" },
-    { "type": "image_picker", "id": "patch_14_img", "label": "Patch 14" },
-    { "type": "text", "id": "patch_14_name", "label": "Patch 14 Name" },
-    { "type": "image_picker", "id": "patch_15_img", "label": "Patch 15" },
-    { "type": "text", "id": "patch_15_name", "label": "Patch 15 Name" },
-    { "type": "image_picker", "id": "patch_16_img", "label": "Patch 16" },
-    { "type": "text", "id": "patch_16_name", "label": "Patch 16 Name" },
-    { "type": "image_picker", "id": "patch_17_img", "label": "Patch 17" },
-    { "type": "text", "id": "patch_17_name", "label": "Patch 17 Name" },
-    { "type": "image_picker", "id": "patch_18_img", "label": "Patch 18" },
-    { "type": "text", "id": "patch_18_name", "label": "Patch 18 Name" },
-    { "type": "image_picker", "id": "patch_19_img", "label": "Patch 19" },
-    { "type": "text", "id": "patch_19_name", "label": "Patch 19 Name" },
-    { "type": "image_picker", "id": "patch_20_img", "label": "Patch 20" },
-    { "type": "text", "id": "patch_20_name", "label": "Patch 20 Name" },
-    { "type": "image_picker", "id": "patch_21_img", "label": "Patch 21" },
-    { "type": "text", "id": "patch_21_name", "label": "Patch 21 Name" },
-    { "type": "image_picker", "id": "patch_22_img", "label": "Patch 22" },
-    { "type": "text", "id": "patch_22_name", "label": "Patch 22 Name" }
+      "type": "checkbox",
+      "id": "required",
+      "label": "Require personalization",
+      "default": false
+    }
   ]
 }
 {% endschema %}
 
 <div class="personalizer-container" data-product-id="{{ product.id }}">
-  <h2>{{ block.settings.heading }}</h2>
-
-  <div class="personalizer-layout">
-    <!-- Preview Area with Tabs -->
-    <div class="personalizer-preview">
-      <div class="preview-tabs">
-        <button class="preview-tab active" data-tab="front">Front</button>
-        <button class="preview-tab" data-tab="back">Back</button>
-      </div>
-
-      <!-- Front Preview (2nd image) -->
-      <div class="preview-wrapper" id="front-preview">
-        {% assign front_image = product.images[1] | default: product.featured_image %}
-        <img src="{{ front_image | image_url: width: 800 }}" alt="Front View" class="base-image" width="800" height="1200">
-        <div id="preview-overlay"></div>
-      </div>
-
-      <!-- Back Preview (3rd image) -->
-      <div class="preview-wrapper" id="back-preview" style="display: none;">
-        {% assign back_image = product.images[2] | default: product.featured_image %}
-        <img src="{{ back_image | image_url: width: 800 }}" alt="Back View" class="base-image" width="800" height="1200">
-        <div id="back-overlay"></div>
-      </div>
+  <div class="personalizer-field" id="personalizer-field">
+    <label class="personalizer-label" for="personalizer-input" id="personalizer-label">
+      {{ block.settings.label }}
+    </label>
+    <textarea
+      id="personalizer-input"
+      class="personalizer-input"
+      placeholder="Enter your personalization here..."
+      maxlength="{{ block.settings.char_limit }}"
+    ></textarea>
+    <div class="personalizer-char-count">
+      <span id="personalizer-count">0</span> / <span id="personalizer-max">{{ block.settings.char_limit }}</span>
     </div>
-
-    <!-- Controls Area -->
-    <div class="personalizer-controls">
-      <div class="patch-selectors">
-        <h3>Select Your Patches</h3>
-        <div id="patch-slots"></div>
-      </div>
-
-      <div class="text-input-section">
-        <h3>Front Name (Embroidery)</h3>
-        <input type="text" id="embroidery-text" placeholder="Enter Name (e.g. Maverick)" maxlength="12">
-      </div>
-
-      <div class="text-input-section">
-        <h3>Back Name (Embroidery)</h3>
-        <input type="text" id="back-text" placeholder="Enter Back Name" maxlength="12">
-        <div class="color-selector">
-          <label>Text Color:</label>
-          <button class="color-btn active" data-color="white">White</button>
-          <button class="color-btn" data-color="black">Black</button>
-        </div>
-      </div>
+    <div class="personalizer-error" id="personalizer-error" style="display: none;">
+      This field is required.
     </div>
   </div>
 
-  <!-- Hidden inputs for form submission -->
-  <div id="hidden-inputs-container"></div>
-  <input type="hidden" name="properties[Embroidery Text]" id="prop-text">
-  <input type="hidden" name="properties[Back Text]" id="prop-back-text">
-  <input type="hidden" name="properties[Back Text Color]" id="prop-back-color" value="white">
+  <!-- Hidden input for form submission -->
+  <input type="hidden" name="properties[Personalization]" id="prop-personalization">
 
-  <!-- Data Injection -->
   <script>
+    window.PERSONALIZER_PROXY_URL = "/apps/personalizer";
     window.PERSONALIZER_CONFIG = {
-      textZone: {
-        top: {{ block.settings.text_top | default: 25 }},
-        left: {{ block.settings.text_left | default: 50 }}
-      },
-      backTextZone: {
-        top: {{ block.settings.back_text_top | default: 30 }},
-        left: {{ block.settings.back_text_left | default: 50 }}
-      },
-      frontNameFeeVariant: {{ block.settings.front_name_fee_variant | default: '' | json }},
-      backNameFeeVariant: {{ block.settings.back_name_fee_variant | default: '' | json }},
-      slots: [
-        { id: "1", name: "Right Chest", top: {{ block.settings.slot_1_top }}, left: {{ block.settings.slot_1_left }}, width: {{ block.settings.slot_1_width }} },
-        { id: "2", name: "Left Chest", top: {{ block.settings.slot_2_top }}, left: {{ block.settings.slot_2_left }}, width: {{ block.settings.slot_2_width }} },
-        { id: "3", name: "Right Hip", top: {{ block.settings.slot_3_top }}, left: {{ block.settings.slot_3_left }}, width: {{ block.settings.slot_3_width }} },
-        { id: "4", name: "Left Hip", top: {{ block.settings.slot_4_top }}, left: {{ block.settings.slot_4_left }}, width: {{ block.settings.slot_4_width }} },
-        { id: "5", name: "Hat", top: {{ block.settings.slot_5_top }}, left: {{ block.settings.slot_5_left }}, width: {{ block.settings.slot_5_width }} },
-        { id: "6", name: "Arm", top: {{ block.settings.slot_6_top }}, left: {{ block.settings.slot_6_left }}, width: {{ block.settings.slot_6_width }} }
-      ],
-      patches: []
+      label: {{ block.settings.label | json }},
+      charLimit: {{ block.settings.char_limit }},
+      required: {{ block.settings.required }}
     };
-
-    // Populate patches (unified - no groups)
-    {% for i in (1..22) %}
-      {% assign img_key = 'patch_' | append: i | append: '_img' %}
-      {% assign name_key = 'patch_' | append: i | append: '_name' %}
-      {% if block.settings[img_key] != blank %}
-    window.PERSONALIZER_CONFIG.patches.push({
-      id: "p{{ i }}",
-      name: {{ block.settings[name_key] | default: 'Patch' | append: ' ' | append: i | json }},
-      src: "{{ block.settings[img_key] | image_url: width: 300, format: 'png' }}"
-    });
-      {% endif %}
-    {% endfor %}
-
-    console.log('PERSONALIZER: VERSION 27 (name fees)');
-    console.log('Config:', window.PERSONALIZER_CONFIG);
   </script>
 </div>
