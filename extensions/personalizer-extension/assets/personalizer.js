@@ -10,22 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!inputEl) return;
 
-  // Move the widget into the product form, right before the add-to-cart button area
-  const productForm = document.querySelector('form[action*="/cart/add"]');
-  if (productForm) {
-    // Find the submit button
-    const submitBtn = productForm.querySelector('[type="submit"], button[name="add"]');
-    if (submitBtn) {
-      // Walk up from submit button to find the direct child of the form
-      let target = submitBtn;
-      while (target.parentNode && target.parentNode !== productForm) {
-        target = target.parentNode;
-      }
-      // Insert before the submit button's top-level wrapper
-      productForm.insertBefore(container, target);
-    } else {
-      productForm.appendChild(container);
-    }
+  // Find the product form and insert the widget right before it
+  // (after variant selectors and quantity, before the add-to-cart button)
+  const productFormWrapper = document.querySelector('product-form');
+  const productForm = document.querySelector('form[action*="/cart/add"][data-type="add-to-cart-form"]') ||
+                      document.querySelector('product-form form[action*="/cart/add"]') ||
+                      document.querySelector('form[action*="/cart/add"]');
+
+  if (productFormWrapper) {
+    // Insert before the <product-form> element (after variant selectors)
+    productFormWrapper.parentNode.insertBefore(container, productFormWrapper);
   }
 
   // Character count + sync hidden input
@@ -35,10 +29,16 @@ document.addEventListener('DOMContentLoaded', function () {
     if (errorEl) errorEl.style.display = 'none';
   });
 
-  // Form validation
+  // On form submit: copy value into a hidden input inside the actual form
   if (productForm) {
+    // Create a hidden input inside the form so the value gets submitted
+    const formInput = document.createElement('input');
+    formInput.type = 'hidden';
+    formInput.name = 'properties[Personalization]';
+    productForm.appendChild(formInput);
+
     productForm.addEventListener('submit', function (e) {
-      if (hiddenInput) hiddenInput.value = inputEl.value;
+      formInput.value = inputEl.value;
 
       if (isRequired && !inputEl.value.trim()) {
         e.preventDefault();
