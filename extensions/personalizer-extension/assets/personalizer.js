@@ -10,12 +10,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!inputEl) return;
 
-  // Move the widget into the product form, right before the submit/add-to-cart button
+  // Move the widget into the product form, right before the add-to-cart button area
   const productForm = document.querySelector('form[action*="/cart/add"]');
   if (productForm) {
+    // Find the submit button
     const submitBtn = productForm.querySelector('[type="submit"], button[name="add"]');
     if (submitBtn) {
-      submitBtn.parentNode.insertBefore(container, submitBtn);
+      // Walk up from submit button to find the direct child of the form
+      let target = submitBtn;
+      while (target.parentNode && target.parentNode !== productForm) {
+        target = target.parentNode;
+      }
+      // Insert before the submit button's top-level wrapper
+      productForm.insertBefore(container, target);
     } else {
       productForm.appendChild(container);
     }
